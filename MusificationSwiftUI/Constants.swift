@@ -13,3 +13,5 @@ let tabs = [
 ["text" : "Artists", "imageName" : "person"],
 ["text" : "Genres", "imageName" : "book"]
 ]
+
+let defaultSongItemsLimit = 20

@@ -14,7 +14,7 @@ struct GenresView : View {
         NavigationView {
             List {
                 ForEach(genres.identified(by: \.id)) { genre in
-                    Text(genre.name)
+                    GenreListItem(genre: genre)
                 }
             }
             .navigationBarTitle(Text("Explore Genres"))

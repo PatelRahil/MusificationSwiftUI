@@ -26,7 +26,6 @@ class Artist: DataParsable {
     }
     func parseData<Parsable>(data artistData: [String:Any], success: @escaping (_ result: Parsable) -> Void, fail: @escaping (_ error: Error) -> Void) {
         print("Artist Data: \n\(artistData)")
-        var albums: [Album] = []
         if let id = artistData["id"] as? String {
             self.id = id
         } else {
@@ -48,11 +47,10 @@ class Artist: DataParsable {
         }
         if let relationships = artistData["relationships"] as? [String:Any] {
             if let albumsDict = relationships["albums"] as? [String: Any] {
-                print("Albums: \(albums)")
                 if let albumsData = albumsDict["data"] as? [[String: String]] {
                     var hrefs: [String] = []
                     for albumData in albumsData {
-                        if let href = albumData["href"] as? String {
+                        if let href = albumData["href"] {
                             hrefs.append(href)
                         }
                     }

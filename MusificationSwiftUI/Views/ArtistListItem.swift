@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct ArtistListItem : View {
-    var artist: Artist
+    @State var artist: Artist
     @EnvironmentObject var viewModel: ContentViewModel
     var body: some View {
         print("LIST ITEM: \(artist.name)")
-        return NavigationButton(destination: ArtistInfoView(artist: artist).environmentObject(viewModel)) {
+        return NavigationButton(destination: ArtistInfoView(artist: $artist).environmentObject(viewModel)) {
             Text(artist.name)
         }
     }

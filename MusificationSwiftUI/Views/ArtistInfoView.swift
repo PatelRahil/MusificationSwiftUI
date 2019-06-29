@@ -9,10 +9,15 @@
 import SwiftUI
 
 struct ArtistInfoView : View {
-    var artist: Artist
+    @Binding var artist: Artist
     @EnvironmentObject var viewModel: ContentViewModel
+    @State var tracking = false
     var body: some View {
         VStack {
+            Divider()
+            Toggle(isOn: $tracking) {
+                Text("Tracking").bold()
+            }.padding().accentColor(Palette.primaryColor)
             Divider()
             HStack {
                 Text("Albums").font(.headline).padding()
@@ -32,8 +37,9 @@ struct ArtistInfoView : View {
 
 #if DEBUG
 struct ArtistInfoView_Previews : PreviewProvider {
+    @State static var artist = Artist(name: "Bruno Mars", id: "1")
     static var previews: some View {
-        ArtistInfoView(artist: Artist(name: "Bruno Mars", id: "1"))
+        ArtistInfoView(artist: $artist)
     }
 }
 #endif

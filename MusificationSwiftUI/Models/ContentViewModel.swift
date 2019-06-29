@@ -40,6 +40,23 @@ final class ContentViewModel: BindableObject {
             }
         }
     }
+    var displayedSongs: [Song] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.didChange.send(self)
+            }
+        }
+    }
+    var selectedArtist: Artist = Artist() {
+        didSet {
+            DispatchQueue.main.async {
+                self.didChange.send(self)
+            }
+        }
+    }
+    
+    
+    
     func fetchTrackedArtists() {
         
     }
@@ -50,8 +67,8 @@ final class ContentViewModel: BindableObject {
             print(error.localizedDescription)
         }
     }
-    func searchArtists(with prefix: String) {
-        MusicRequest.getArtistsStarting(with: prefix, limit: 10, success: { artists in
+    func searchArtists(with prefix: String, limit: Int = defaultSongItemsLimit) {
+        MusicRequest.getArtistsStarting(with: prefix, limit: limit, success: { artists in
             self.searchedArtists = artists
         }) { (error) in
             print(error.localizedDescription)
@@ -60,6 +77,20 @@ final class ContentViewModel: BindableObject {
     func fetchAlbums(for artist: Artist) {
         artist.downloadAlbums(success: { albums in
             self.displayedAlbums = albums
+        }) { error in
+            print(error.localizedDescription)
+        }
+    }
+    func fetchSongs(for genre: Genre, limit: Int) {
+        MusicRequest.getSongs(genreID: genre.id, limit: limit, success: { songs in
+            self.displayedSongs = songs
+        }) { error in
+            print(error.localizedDescription)
+        }
+    }
+    func fetchArtist(named: String) {
+        MusicRequest.getArtist(artistName: named, success: { artist in
+            self.selectedArtist = artist
         }) { error in
             print(error.localizedDescription)
         }
