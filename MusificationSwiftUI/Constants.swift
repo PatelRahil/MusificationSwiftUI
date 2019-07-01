@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 let tabs = [
 ["text" : "Tracked", "imageName" : "star"],
@@ -15,3 +16,7 @@ let tabs = [
 ]
 
 let defaultSongItemsLimit = 20
+
+let albumSize = 150
+
+let albumShadowRadius = 6

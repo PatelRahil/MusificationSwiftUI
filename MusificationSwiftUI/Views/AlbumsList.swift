@@ -15,10 +15,10 @@ struct AlbumsList : View {
             HStack {
                 ForEach(albums.identified(by: \.id)) { album in
                     AlbumButton(album: album)
-                    .shadow(radius: 6)
+                        .shadow(radius: Length(albumShadowRadius))
                     .padding()
                 }
-            }
+            }.frame(height: Length(albumSize + 2 * albumShadowRadius))
         }
     }
 }

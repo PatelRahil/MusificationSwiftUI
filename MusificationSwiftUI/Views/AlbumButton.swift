@@ -18,7 +18,7 @@ struct AlbumButton : View {
                 Palette.primaryColor
                 VStack {
                     Text(album.name)
-                        .frame(width: 150, height: 150)
+                        .frame(width: Length(albumSize), height: Length(albumSize))
                     .multilineTextAlignment(.center)
                 }
             }
