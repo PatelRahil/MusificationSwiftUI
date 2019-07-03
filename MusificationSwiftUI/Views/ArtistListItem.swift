@@ -12,11 +12,19 @@ struct ArtistListItem : View {
     @State var artist: Artist
     @EnvironmentObject var viewModel: ContentViewModel
     @EnvironmentObject var dataModel: UserDataModel
+    @State var isPresented = false
     var body: some View {
-        print("LIST ITEM: \(artist.name)")
-        return NavigationButton(destination: ArtistInfoView(artist: $artist, isTracking: dataModel.bindingIsTracking(artist: artist)).environmentObject(viewModel)) {
-            Text(artist.name)
-        }
+        Button(action: {
+            self.isPresented = true
+        }) {
+            HStack {
+                Text(artist.name)
+                Spacer()
+                Image(systemName: "info.circle").foregroundColor(.gray)
+            }
+        }.presentation(isPresented ? Modal(ArtistInfoView(artist: $artist, viewModel: viewModel, dataModel: dataModel, isTracking: dataModel.isTrackingBinding(for: artist)), onDismiss: {
+            self.isPresented = false
+        }) : nil)
     }
 }
 

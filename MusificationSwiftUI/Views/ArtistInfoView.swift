@@ -10,13 +10,13 @@ import SwiftUI
 
 struct ArtistInfoView : View {
     @Binding var artist: Artist
-    @EnvironmentObject var viewModel: ContentViewModel
-    @EnvironmentObject var dataModel: UserDataModel
+    @ObjectBinding var viewModel: ContentViewModel
+    @ObjectBinding var dataModel: UserDataModel
     var isTracking: Binding<Bool>
-    let tapGesture = TapGesture()
     var body: some View {
         
         return VStack {
+            Text(artist.name).bold().font(.largeTitle).padding()
             Divider()
             Toggle(isOn: isTracking) {
                 Text("Tracking").bold()
@@ -36,11 +36,12 @@ struct ArtistInfoView : View {
         .navigationBarTitle(Text(artist.name))
             .onAppear {
                 self.viewModel.fetchAlbums(for: self.artist)
-        }.highPriorityGesture(tapGesture)
+        }
         
     }
 }
 
+/*
 #if DEBUG
 struct ArtistInfoView_Previews : PreviewProvider {
     @State static var artist = Artist(name: "Bruno Mars", id: "1")
@@ -50,3 +51,4 @@ struct ArtistInfoView_Previews : PreviewProvider {
     }
 }
 #endif
+*/

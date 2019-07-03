@@ -12,17 +12,26 @@ struct SongListItem : View {
     var song: Song
     @EnvironmentObject var viewModel: ContentViewModel
     @EnvironmentObject var dataModel: UserDataModel
+    @State var artistLoaded = false
     var body: some View {
-
-        NavigationButton(destination: ArtistInfoView(artist: $viewModel.selectedArtist, isTracking: dataModel.bindingIsTracking(artist: viewModel.selectedArtist)), isDetail: true, onTrigger: { () -> Bool in
-            self.viewModel.fetchArtist(named: self.song.artist)
-            return true
+        Button(action: {
+            self.viewModel.fetchArtist(named: self.song.artist, success: {
+                self.artistLoaded = true
+            })
         }) {
-            VStack(alignment: .leading) {
-                Text(song.name).bold()
-                Text(song.artist)
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(song.name).bold()
+                    Text(song.artist)
+                }
+            //    .padding()
+                Spacer()
+                Image(systemName: "info.circle").foregroundColor(.gray)
             }
         }
+        .presentation(artistLoaded ? Modal(ArtistInfoView(artist: $viewModel.selectedArtist, viewModel: viewModel, dataModel: dataModel, isTracking: dataModel.isTrackingBinding(for: viewModel.selectedArtist)), onDismiss: {
+                self.artistLoaded = false
+            }) : nil)
     }
 }
 

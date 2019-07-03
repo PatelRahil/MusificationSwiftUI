@@ -88,9 +88,10 @@ final class ContentViewModel: BindableObject {
             print(error.localizedDescription)
         }
     }
-    func fetchArtist(named: String) {
+    func fetchArtist(named: String, success: @escaping () -> Void) {
         MusicRequest.getArtist(artistName: named, success: { artist in
             self.selectedArtist = artist
+            success()
         }) { error in
             print(error.localizedDescription)
         }
