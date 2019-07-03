@@ -22,10 +22,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let contentModel = ContentViewModel()
         contentModel.fetchTrackedArtists()
         contentModel.fetchGenres()
+        let userDataModel = UserDataModel()
         // Use a UIHostingController as window root view controller
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = UIHostingController(
-            rootView: ContentView().environmentObject(contentModel)
+            rootView: ContentView()
+                .environmentObject(contentModel)
+                .environmentObject(userDataModel)
         )
         self.window = window
         window.makeKeyAndVisible()

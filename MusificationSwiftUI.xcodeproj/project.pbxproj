@@ -10,6 +10,7 @@
 		5A53801F22C7547F007CCE00 /* AppleMusicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53801E22C7547F007CCE00 /* AppleMusicButton.swift */; };
 		5A53802122C75A8E007CCE00 /* AlbumsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53802022C75A8E007CCE00 /* AlbumsList.swift */; };
 		5A53802322C75CC7007CCE00 /* AlbumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53802222C75CC7007CCE00 /* AlbumButton.swift */; };
+		5A66863422C9D15800C78C19 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66863322C9D15800C78C19 /* UserDataModel.swift */; };
 		5AA4052A22C7F7A400481FA7 /* GenreListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4052922C7F7A400481FA7 /* GenreListItem.swift */; };
 		5AA4052C22C7F83800481FA7 /* GenreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4052B22C7F83800481FA7 /* GenreInfoView.swift */; };
 		5AA4052E22C7FEF500481FA7 /* SongListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4052D22C7FEF500481FA7 /* SongListItem.swift */; };
@@ -44,6 +45,7 @@
 		5A53801E22C7547F007CCE00 /* AppleMusicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicButton.swift; sourceTree = "<group>"; };
 		5A53802022C75A8E007CCE00 /* AlbumsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsList.swift; sourceTree = "<group>"; };
 		5A53802222C75CC7007CCE00 /* AlbumButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumButton.swift; sourceTree = "<group>"; };
+		5A66863322C9D15800C78C19 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		5AA4052922C7F7A400481FA7 /* GenreListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListItem.swift; sourceTree = "<group>"; };
 		5AA4052B22C7F83800481FA7 /* GenreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreInfoView.swift; sourceTree = "<group>"; };
 		5AA4052D22C7FEF500481FA7 /* SongListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListItem.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				5AA62F1422AD29FC0098FB5C /* Genre.swift */,
 				5AA62F6022B595AB0098FB5C /* ContentViewModel.swift */,
+				5A66863322C9D15800C78C19 /* UserDataModel.swift */,
 				5AA62F2422AD3A7A0098FB5C /* CustomError.swift */,
 				5AA62F1622AD2A2A0098FB5C /* DataParsable.swift */,
 				5AA62F1822AD2A320098FB5C /* Artist.swift */,
@@ -270,6 +273,7 @@
 				5AA62F6822B598730098FB5C /* APIKeys.swift in Sources */,
 				5AA62F1522AD29FC0098FB5C /* Genre.swift in Sources */,
 				5AF6476622A8349900873ACD /* ContentView.swift in Sources */,
+				5A66863422C9D15800C78C19 /* UserDataModel.swift in Sources */,
 				5AA62F1722AD2A2A0098FB5C /* DataParsable.swift in Sources */,
 				5AA62F2322AD2AA90098FB5C /* Palette.swift in Sources */,
 				5A53801F22C7547F007CCE00 /* AppleMusicButton.swift in Sources */,
