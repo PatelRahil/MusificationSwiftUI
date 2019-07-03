@@ -13,7 +13,7 @@ struct ContentView : View {
     var body: some View {
         withAnimation {
             TabbedView {
-                    TrackedArtistsView(tracked: viewModel.trackedArtists)
+                    TrackedArtistsView()
                         .tabItemLabel(Text("Tracked"))
                         .tag(0)
                     GenresView(genres: $viewModel.genres)

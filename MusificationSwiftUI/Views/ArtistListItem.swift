@@ -14,7 +14,7 @@ struct ArtistListItem : View {
     @EnvironmentObject var dataModel: UserDataModel
     var body: some View {
         print("LIST ITEM: \(artist.name)")
-        return NavigationButton(destination: ArtistInfoView(artist: $artist, isTracking: dataModel.isTracking(artist: artist)).environmentObject(viewModel)) {
+        return NavigationButton(destination: ArtistInfoView(artist: $artist, isTracking: dataModel.bindingIsTracking(artist: artist)).environmentObject(viewModel)) {
             Text(artist.name)
         }
     }

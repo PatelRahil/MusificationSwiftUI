@@ -12,28 +12,17 @@ struct ArtistInfoView : View {
     @Binding var artist: Artist
     @EnvironmentObject var viewModel: ContentViewModel
     @EnvironmentObject var dataModel: UserDataModel
-    @State var isTracking: Bool
+    var isTracking: Binding<Bool>
     let tapGesture = TapGesture()
     var body: some View {
+        
         return VStack {
             Divider()
-            Toggle(isOn: $isTracking) {
+            Toggle(isOn: isTracking) {
                 Text("Tracking").bold()
             }
             .padding()
             .accentColor(Palette.primaryColor)
-            .gesture(tapGesture.onEnded { (_) in
-                /*
-                if self.isTracking {
-                    print("Now tracking \(self.artist.name)")
-                    self.dataModel.trackedArtistAppleMusicIds.append(self.artist.id)
-                } else {
-                    print("\(self.artist.name) is not being tacked anymore")
-                    self.dataModel.trackedArtistAppleMusicIds.removeAll{ $0 == self.artist.id }
-                }
-                */
-                print("tapped")
-            })
             Divider()
             HStack {
                 Text("Albums").font(.headline).padding()
@@ -57,7 +46,7 @@ struct ArtistInfoView_Previews : PreviewProvider {
     @State static var artist = Artist(name: "Bruno Mars", id: "1")
     @State static var isTracking = false
     static var previews: some View {
-        ArtistInfoView(artist: $artist, isTracking: isTracking)
+        ArtistInfoView(artist: $artist, isTracking: UserDataModel().bindingIsTracking(artist: Artist()))
     }
 }
 #endif

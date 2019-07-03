@@ -12,12 +12,20 @@ import Combine
 
 final class UserDataModel: BindableObject {
     var didChange = PassthroughSubject<UserDataModel, Never>()
-    var trackedArtistAppleMusicIds: [String] = [] {
+    var trackedArtists: [Artist] = [] {
         didSet {
             didChange.send(self)
         }
     }
-    func isTracking(artist: Artist) -> Bool {
-        return trackedArtistAppleMusicIds.contains(artist.id)
+    func bindingIsTracking(artist: Artist) -> Binding<Bool> {
+        return Binding(getValue: {
+            return self.trackedArtists.contains(artist)
+        }) { (track) in
+            if track {
+                self.trackedArtists.append(artist)
+            } else {
+                self.trackedArtists.removeAll { $0 == artist }
+            }
+        }
     }
 }

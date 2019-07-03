@@ -14,7 +14,7 @@ struct SongListItem : View {
     @EnvironmentObject var dataModel: UserDataModel
     var body: some View {
 
-        NavigationButton(destination: ArtistInfoView(artist: $viewModel.selectedArtist, isTracking: dataModel.isTracking(artist: viewModel.selectedArtist)), isDetail: true, onTrigger: { () -> Bool in
+        NavigationButton(destination: ArtistInfoView(artist: $viewModel.selectedArtist, isTracking: dataModel.bindingIsTracking(artist: viewModel.selectedArtist)), isDetail: true, onTrigger: { () -> Bool in
             self.viewModel.fetchArtist(named: self.song.artist)
             return true
         }) {

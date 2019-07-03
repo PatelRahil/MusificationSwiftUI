@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct TrackedArtistsView : View {
-    var tracked: [Artist]
+    @EnvironmentObject var dataModel: UserDataModel
     var body: some View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(tracked.identified(by: \.self)) { artist in
+                    ForEach(dataModel.trackedArtists.identified(by: \.self)) { artist in
                         ArtistListItem(artist: artist)
                     }
                 }
@@ -27,11 +27,7 @@ struct TrackedArtistsView : View {
 #if DEBUG
 struct TrackedArtistsView_Previews : PreviewProvider {
     static var previews: some View {
-    TrackedArtistsView(tracked: [
-        Artist(name: "Bruno", id: "1"),
-        Artist(name: "Ariana", id: "2"),
-        Artist(name: "Michael", id: "3")
-        ])
+    TrackedArtistsView()
     }
 }
 #endif
