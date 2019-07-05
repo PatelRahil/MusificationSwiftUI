@@ -31,7 +31,7 @@ struct GoogleSignInButton: UIViewRepresentable {
             super.init()
             GIDSignIn.sharedInstance()?.uiDelegate = self
             GIDSignIn.sharedInstance()?.delegate = self
-            GIDSignIn.sharedInstance()?.signIn()
+            //GIDSignIn.sharedInstance()?.signInSilently()
         }
         func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
             
@@ -40,6 +40,10 @@ struct GoogleSignInButton: UIViewRepresentable {
             
         }
         func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+            if error != nil {
+                print(error)
+                return
+            }
             print("Success! Signed in user \(signIn.currentUser.userID)")
             onSignIn(signIn.currentUser.userID)
         }

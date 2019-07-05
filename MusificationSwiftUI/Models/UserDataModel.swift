@@ -46,7 +46,6 @@ final class UserDataModel: BindableObject {
             guard let userData = snapshot.value as? [String: Any] else { return }
             guard let trackedArtistIds = userData["trackedArtists"] as? [String] else { return }
             self.getTrackedArtists(ids: trackedArtistIds, success: { artists in
-                print("Updated Artists: \(artists)")
                 self.trackedArtists = artists
             })
         }
@@ -55,7 +54,6 @@ final class UserDataModel: BindableObject {
         var trackedArtists: [Artist] = []
         for id in ids {
             MusicRequest.getArtist(id: id, success: { artist in
-                print("Got artist: \(artist.name)")
                 trackedArtists.append(artist)
                 success(trackedArtists)
             }) { error in

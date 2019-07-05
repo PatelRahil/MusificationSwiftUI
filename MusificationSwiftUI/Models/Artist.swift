@@ -25,7 +25,6 @@ class Artist: DataParsable {
         self.id = id
     }
     func parseData<Parsable>(data artistData: [String:Any], success: @escaping (_ result: Parsable) -> Void, fail: @escaping (_ error: Error) -> Void) {
-        print("Artist Data: \n\(artistData)")
         if let id = artistData["id"] as? String {
             self.id = id
         } else {
