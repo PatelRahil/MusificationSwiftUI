@@ -19,6 +19,13 @@ final class UserDataModel: BindableObject {
             }
         }
     }
+    var uid: String? {
+        didSet {
+            DispatchQueue.main.async {
+                self.didChange.send(self)
+            }
+        }
+    }
     func isTrackingBinding(for artist: Artist) -> Binding<Bool> {
         return Binding(getValue: {
             return self.trackedArtists.contains(artist)
@@ -30,4 +37,5 @@ final class UserDataModel: BindableObject {
             }
         }
     }
+    func getTrackedArtists
 }

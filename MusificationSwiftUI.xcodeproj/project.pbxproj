@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,10 +39,16 @@
 		5AF6476822A8349B00873ACD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AF6476722A8349B00873ACD /* Assets.xcassets */; };
 		5AF6476B22A8349B00873ACD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AF6476A22A8349B00873ACD /* Preview Assets.xcassets */; };
 		5AF6476E22A8349B00873ACD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AF6476C22A8349B00873ACD /* LaunchScreen.storyboard */; };
-		FB045B5022CFA0DF00E0A2CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB045B4F22CFA0DF00E0A2CB /* GoogleService-Info.plist */; };
+		CB13D20654A105524A93FCF8 /* Pods_MusificationSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F007F998D1973F911D31465 /* Pods_MusificationSwiftUI.framework */; };
+		FB045B5222CFA3E600E0A2CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB045B5122CFA3E600E0A2CB /* GoogleService-Info.plist */; };
+		FB99F85122CFB7210086451C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99F85022CFB7210086451C /* SignInView.swift */; };
+		FB99F85322CFB8100086451C /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99F85222CFB8100086451C /* GoogleSignInButton.swift */; };
+		FB99F85522CFC5A50086451C /* FirebaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99F85422CFC5A50086451C /* FirebaseRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F007F998D1973F911D31465 /* Pods_MusificationSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusificationSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		37104672626220AEAD9D76FF /* Pods-MusificationSwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusificationSwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-MusificationSwiftUI/Pods-MusificationSwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 		5A53801E22C7547F007CCE00 /* AppleMusicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicButton.swift; sourceTree = "<group>"; };
 		5A53802022C75A8E007CCE00 /* AlbumsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsList.swift; sourceTree = "<group>"; };
 		5A53802222C75CC7007CCE00 /* AlbumButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumButton.swift; sourceTree = "<group>"; };
@@ -77,7 +83,11 @@
 		5AF6476A22A8349B00873ACD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5AF6476D22A8349B00873ACD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AF6476F22A8349B00873ACD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB045B4F22CFA0DF00E0A2CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		62B0F42D41B7719881AAF091 /* Pods-MusificationSwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusificationSwiftUI.release.xcconfig"; path = "Target Support Files/Pods-MusificationSwiftUI/Pods-MusificationSwiftUI.release.xcconfig"; sourceTree = "<group>"; };
+		FB045B5122CFA3E600E0A2CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FB99F85022CFB7210086451C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		FB99F85222CFB8100086451C /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
+		FB99F85422CFC5A50086451C /* FirebaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,12 +95,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB13D20654A105524A93FCF8 /* Pods_MusificationSwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DC5AF2C11CF1A994A3BBB6A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37104672626220AEAD9D76FF /* Pods-MusificationSwiftUI.debug.xcconfig */,
+				62B0F42D41B7719881AAF091 /* Pods-MusificationSwiftUI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5967525F48ED86C81AACE437 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F007F998D1973F911D31465 /* Pods_MusificationSwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5AA62F1322AD29DF0098FB5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +151,7 @@
 			children = (
 				5AA62F6222B598010098FB5C /* HttpRequest.swift */,
 				5AA62F6522B5983E0098FB5C /* MusicRequest.swift */,
+				FB99F85422CFC5A50086451C /* FirebaseRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -133,6 +162,8 @@
 				5AA62F6922B599870098FB5C /* keys.json */,
 				5AF6476022A8349900873ACD /* MusificationSwiftUI */,
 				5AF6475F22A8349900873ACD /* Products */,
+				1DC5AF2C11CF1A994A3BBB6A /* Pods */,
+				5967525F48ED86C81AACE437 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,13 +182,14 @@
 				5AA62F2A22ADE22A0098FB5C /* Constants.swift */,
 				5AF6476322A8349900873ACD /* SceneDelegate.swift */,
 				5AA62F6722B598730098FB5C /* APIKeys.swift */,
+				FB045B5622CFAB1700E0A2CB /* ViewRepresentables */,
 				5AA62F6422B5982A0098FB5C /* Requests */,
 				5AA62F1322AD29DF0098FB5C /* Models */,
 				5AF6478322A834B500873ACD /* Views */,
 				5AF6476722A8349B00873ACD /* Assets.xcassets */,
 				5AF6476C22A8349B00873ACD /* LaunchScreen.storyboard */,
 				5AF6476F22A8349B00873ACD /* Info.plist */,
-				FB045B4F22CFA0DF00E0A2CB /* GoogleService-Info.plist */,
+				FB045B5122CFA3E600E0A2CB /* GoogleService-Info.plist */,
 				5AF6476922A8349B00873ACD /* Preview Content */,
 			);
 			path = MusificationSwiftUI;
@@ -175,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				5AF6476522A8349900873ACD /* ContentView.swift */,
+				FB99F85022CFB7210086451C /* SignInView.swift */,
 				5AA62F2D22AF22C10098FB5C /* ArtistInfoView.swift */,
 				5A53801E22C7547F007CCE00 /* AppleMusicButton.swift */,
 				5AA62F5D22AF52330098FB5C /* ArtistListItem.swift */,
@@ -188,6 +221,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		FB045B5622CFAB1700E0A2CB /* ViewRepresentables */ = {
+			isa = PBXGroup;
+			children = (
+				FB99F85222CFB8100086451C /* GoogleSignInButton.swift */,
+			);
+			path = ViewRepresentables;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -195,9 +236,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5AF6477D22A8349B00873ACD /* Build configuration list for PBXNativeTarget "MusificationSwiftUI" */;
 			buildPhases = (
+				A38ACC44B705BBD828B89D39 /* [CP] Check Pods Manifest.lock */,
 				5AF6475A22A8349900873ACD /* Sources */,
 				5AF6475B22A8349900873ACD /* Frameworks */,
 				5AF6475C22A8349900873ACD /* Resources */,
+				BFE103102894D039F1B778F9 /* [CP] Embed Pods Frameworks */,
+				CCCD2E6C226304A9EB71BF44 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -248,13 +292,72 @@
 			files = (
 				5AF6476E22A8349B00873ACD /* LaunchScreen.storyboard in Resources */,
 				5AA62F6A22B599870098FB5C /* keys.json in Resources */,
-				FB045B5022CFA0DF00E0A2CB /* GoogleService-Info.plist in Resources */,
+				FB045B5222CFA3E600E0A2CB /* GoogleService-Info.plist in Resources */,
 				5AF6476B22A8349B00873ACD /* Preview Assets.xcassets in Resources */,
 				5AF6476822A8349B00873ACD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A38ACC44B705BBD828B89D39 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MusificationSwiftUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFE103102894D039F1B778F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MusificationSwiftUI/Pods-MusificationSwiftUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MusificationSwiftUI/Pods-MusificationSwiftUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MusificationSwiftUI/Pods-MusificationSwiftUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCCD2E6C226304A9EB71BF44 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MusificationSwiftUI/Pods-MusificationSwiftUI-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MusificationSwiftUI/Pods-MusificationSwiftUI-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MusificationSwiftUI/Pods-MusificationSwiftUI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5AF6475A22A8349900873ACD /* Sources */ = {
@@ -280,10 +383,13 @@
 				5A66863422C9D15800C78C19 /* UserDataModel.swift in Sources */,
 				5AA62F1722AD2A2A0098FB5C /* DataParsable.swift in Sources */,
 				5AA62F2322AD2AA90098FB5C /* Palette.swift in Sources */,
+				FB99F85322CFB8100086451C /* GoogleSignInButton.swift in Sources */,
+				FB99F85522CFC5A50086451C /* FirebaseRequest.swift in Sources */,
 				5A53801F22C7547F007CCE00 /* AppleMusicButton.swift in Sources */,
 				5AA4052A22C7F7A400481FA7 /* GenreListItem.swift in Sources */,
 				5AA62F1922AD2A320098FB5C /* Artist.swift in Sources */,
 				5AA62F1222AD29910098FB5C /* TrackedArtistsView.swift in Sources */,
+				FB99F85122CFB7210086451C /* SignInView.swift in Sources */,
 				5AA62F2E22AF22C10098FB5C /* ArtistInfoView.swift in Sources */,
 				5AA62F6122B595AB0098FB5C /* ContentViewModel.swift in Sources */,
 				5AA62F1F22AD2A7B0098FB5C /* Settings.swift in Sources */,
@@ -422,6 +528,7 @@
 		};
 		5AF6477E22A8349B00873ACD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37104672626220AEAD9D76FF /* Pods-MusificationSwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -442,6 +549,7 @@
 		};
 		5AF6477F22A8349B00873ACD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62B0F42D41B7719881AAF091 /* Pods-MusificationSwiftUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

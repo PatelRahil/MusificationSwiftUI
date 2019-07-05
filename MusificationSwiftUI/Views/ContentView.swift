@@ -7,21 +7,27 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView : View {
     @EnvironmentObject var viewModel: ContentViewModel
+    @EnvironmentObject var userDataModel: UserDataModel
     var body: some View {
-        withAnimation {
-            TabbedView {
-                    TrackedArtistsView()
-                        .tabItemLabel(Text("Tracked"))
-                        .tag(0)
-                    GenresView(genres: $viewModel.genres)
-                        .tabItemLabel(Text("Genres"))
-                        .tag(1)
-                    ArtistsView()
-                        .tabItemLabel(Text("Artists"))
-                        .tag(2)
+        Group {
+            if userDataModel.uid != nil {
+                TabbedView {
+                        TrackedArtistsView()
+                            .tabItemLabel(Text("Tracked"))
+                            .tag(0)
+                        GenresView(genres: $viewModel.genres)
+                            .tabItemLabel(Text("Genres"))
+                            .tag(1)
+                        ArtistsView()
+                            .tabItemLabel(Text("Artists"))
+                            .tag(2)
+                }
+            } else {
+                SignInView()
             }
         }
     }
