@@ -39,6 +39,7 @@
 		5AF6476822A8349B00873ACD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AF6476722A8349B00873ACD /* Assets.xcassets */; };
 		5AF6476B22A8349B00873ACD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AF6476A22A8349B00873ACD /* Preview Assets.xcassets */; };
 		5AF6476E22A8349B00873ACD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AF6476C22A8349B00873ACD /* LaunchScreen.storyboard */; };
+		FB045B5022CFA0DF00E0A2CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB045B4F22CFA0DF00E0A2CB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		5AF6476A22A8349B00873ACD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5AF6476D22A8349B00873ACD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AF6476F22A8349B00873ACD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB045B4F22CFA0DF00E0A2CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				5AF6476722A8349B00873ACD /* Assets.xcassets */,
 				5AF6476C22A8349B00873ACD /* LaunchScreen.storyboard */,
 				5AF6476F22A8349B00873ACD /* Info.plist */,
+				FB045B4F22CFA0DF00E0A2CB /* GoogleService-Info.plist */,
 				5AF6476922A8349B00873ACD /* Preview Content */,
 			);
 			path = MusificationSwiftUI;
@@ -245,6 +248,7 @@
 			files = (
 				5AF6476E22A8349B00873ACD /* LaunchScreen.storyboard in Resources */,
 				5AA62F6A22B599870098FB5C /* keys.json in Resources */,
+				FB045B5022CFA0DF00E0A2CB /* GoogleService-Info.plist in Resources */,
 				5AF6476B22A8349B00873ACD /* Preview Assets.xcassets in Resources */,
 				5AF6476822A8349B00873ACD /* Assets.xcassets in Resources */,
 			);
