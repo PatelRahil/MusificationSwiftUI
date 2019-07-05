@@ -20,7 +20,7 @@ struct ArtistListItem : View {
             HStack {
                 Text(artist.name)
                 Spacer()
-                Image(systemName: "info.circle").foregroundColor(.gray)
+                Image(systemName: "info.circle.fill").foregroundColor(.gray)
             }
         }.presentation(isPresented ? Modal(ArtistInfoView(artist: $artist, viewModel: viewModel, dataModel: dataModel, isTracking: dataModel.isTrackingBinding(for: artist)), onDismiss: {
             self.isPresented = false

@@ -26,7 +26,7 @@ struct SongListItem : View {
                 }
             //    .padding()
                 Spacer()
-                Image(systemName: "info.circle").foregroundColor(.gray)
+                Image(systemName: "info.circle.fill").foregroundColor(.gray)
             }
         }
         .presentation(artistLoaded ? Modal(ArtistInfoView(artist: $viewModel.selectedArtist, viewModel: viewModel, dataModel: dataModel, isTracking: dataModel.isTrackingBinding(for: viewModel.selectedArtist)), onDismiss: {
