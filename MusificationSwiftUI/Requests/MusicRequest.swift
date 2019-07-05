@@ -88,6 +88,20 @@ class MusicRequest : HttpRequest {
             }
         }
     }
+    static func getArtist(id: String, success: @escaping (_ artist: Artist) -> Void, fail: @escaping (_ error: Error) -> Void) {
+        let urlString = rootDbPath + storefront + "/artists/\(id)"
+        if let header = header {
+            super.makeGetRequest(urlString: urlString, header: header, headerField: headerField, success: { (data) in
+                processArtistIDSearch(data: data, success: { artist in
+                    success(artist)
+                }, fail: { (error) in
+                    fail(error)
+                })
+            }) { (error) in
+                fail(error)
+            }
+        }
+    }
     static func getAlbums(with urlStrings: [String], success: @escaping (_ albums: [Album]) -> Void, fail: @escaping (_ error: Error) -> Void) {
         var albums: [Album] = []
         for urlString in urlStrings {
@@ -156,6 +170,19 @@ class MusicRequest : HttpRequest {
             }
         } else {
             fail(CustomError("The data does not have \"results\" or results is not a dictionary of String:Any pairs. Data is: \n\(data)"))
+        }
+    }
+    
+    private static func processArtistIDSearch(data: [String: Any], success: @escaping (_ artist: Artist) -> Void, fail: @escaping (_ error: Error) -> Void) {
+        let artist = Artist()
+        if let dataProp = data["data"] as? [[String: Any]] {
+            if let artistData = dataProp.first {
+                artist.parseData(data: artistData, success: { artist in
+                    success(artist)
+                }) { error in
+                    fail(error)
+                }
+            }
         }
     }
     

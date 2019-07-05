@@ -58,7 +58,8 @@ class Artist: DataParsable {
                 }
             }
         }
-        success(self as! Parsable)
+        let ret = self as! Parsable
+        success(ret)
     }
     
     func openURL(/*controller: UIViewController*/) {

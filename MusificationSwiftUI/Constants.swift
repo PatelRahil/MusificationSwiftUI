@@ -20,3 +20,5 @@ let defaultSongItemsLimit = 20
 let albumSize = 150
 
 let albumShadowRadius = 6
+
+let dataBatchCount = 100

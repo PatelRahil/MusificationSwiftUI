@@ -15,6 +15,7 @@ struct SignInView : View {
             GoogleSignInButton { uid in
                 print("callback \(uid)")
                 self.userDataModel.uid = uid
+                self.userDataModel.loadTrackedArtists()
             }
         }
     }

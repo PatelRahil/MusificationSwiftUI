@@ -11,6 +11,7 @@ import SwiftUI
 import Combine
 
 final class UserDataModel: BindableObject {
+    private var dbUserRoot = "/Users"
     var didChange = PassthroughSubject<UserDataModel, Never>()
     var trackedArtists: [Artist] = [] {
         didSet {
@@ -35,7 +36,36 @@ final class UserDataModel: BindableObject {
             } else {
                 self.trackedArtists.removeAll { $0 == artist }
             }
+            self.updateDB()
         }
     }
-    func getTrackedArtists
+    func loadTrackedArtists() {
+        guard let uid = self.uid else { return }
+        let observer = FirebaseRequest()
+        observer.observe(path: "\(dbUserRoot)/\(uid)") { (snapshot) in
+            guard let userData = snapshot.value as? [String: Any] else { return }
+            guard let trackedArtistIds = userData["trackedArtists"] as? [String] else { return }
+            self.getTrackedArtists(ids: trackedArtistIds, success: { artists in
+                print("Updated Artists: \(artists)")
+                self.trackedArtists = artists
+            })
+        }
+    }
+    private func getTrackedArtists(ids: [String], success: @escaping ([Artist]) -> Void) {
+        var trackedArtists: [Artist] = []
+        for id in ids {
+            MusicRequest.getArtist(id: id, success: { artist in
+                print("Got artist: \(artist.name)")
+                trackedArtists.append(artist)
+                success(trackedArtists)
+            }) { error in
+                print("Error getting tracked artists: \(error.localizedDescription)")
+            }
+        }
+    }
+    private func updateDB() {
+        guard let uid = uid else { return }
+        let requester = FirebaseRequest()
+        requester.uploadData(path: "\(dbUserRoot)/\(uid)/trackedArtists", value: self.trackedArtists.map { $0.id })
+    }
 }
