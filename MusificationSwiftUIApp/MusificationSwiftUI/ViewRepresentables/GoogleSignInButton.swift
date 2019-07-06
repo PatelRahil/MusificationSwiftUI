@@ -44,7 +44,7 @@ struct GoogleSignInButton: UIViewRepresentable {
         }
         func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
             if error != nil {
-                print(error)
+                print(error.debugDescription)
                 return
             }
             print("Success! Signed in user \(signIn.currentUser.userID)")
