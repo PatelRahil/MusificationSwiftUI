@@ -33,6 +33,7 @@
 		5AA62F6622B5983E0098FB5C /* MusicRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA62F6522B5983E0098FB5C /* MusicRequest.swift */; };
 		5AA62F6822B598730098FB5C /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA62F6722B598730098FB5C /* APIKeys.swift */; };
 		5AA62F6A22B599870098FB5C /* keys.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AA62F6922B599870098FB5C /* keys.json */; };
+		5AD1AEE622D030620013B7EC /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD1AEE522D030620013B7EC /* CreateAccountView.swift */; };
 		5AF6476222A8349900873ACD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6476122A8349900873ACD /* AppDelegate.swift */; };
 		5AF6476422A8349900873ACD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6476322A8349900873ACD /* SceneDelegate.swift */; };
 		5AF6476622A8349900873ACD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6476522A8349900873ACD /* ContentView.swift */; };
@@ -74,6 +75,7 @@
 		5AA62F6522B5983E0098FB5C /* MusicRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRequest.swift; sourceTree = "<group>"; };
 		5AA62F6722B598730098FB5C /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		5AA62F6922B599870098FB5C /* keys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = keys.json; sourceTree = "<group>"; };
+		5AD1AEE522D030620013B7EC /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		5AF6475E22A8349900873ACD /* MusificationSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusificationSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF6476122A8349900873ACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AF6476322A8349900873ACD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				5AF6476522A8349900873ACD /* ContentView.swift */,
 				FB99F85022CFB7210086451C /* SignInView.swift */,
+				5AD1AEE522D030620013B7EC /* CreateAccountView.swift */,
 				5AA62F2D22AF22C10098FB5C /* ArtistInfoView.swift */,
 				5A53801E22C7547F007CCE00 /* AppleMusicButton.swift */,
 				5AA62F5D22AF52330098FB5C /* ArtistListItem.swift */,
@@ -378,6 +381,7 @@
 				5AF6476422A8349900873ACD /* SceneDelegate.swift in Sources */,
 				5AA4052E22C7FEF500481FA7 /* SongListItem.swift in Sources */,
 				5AA62F6822B598730098FB5C /* APIKeys.swift in Sources */,
+				5AD1AEE622D030620013B7EC /* CreateAccountView.swift in Sources */,
 				5AA62F1522AD29FC0098FB5C /* Genre.swift in Sources */,
 				5AF6476622A8349900873ACD /* ContentView.swift in Sources */,
 				5A66863422C9D15800C78C19 /* UserDataModel.swift in Sources */,

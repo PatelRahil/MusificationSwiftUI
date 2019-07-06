@@ -10,6 +10,7 @@ import SwiftUI
 import Firebase
 
 struct SignInView : View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var userDataModel: UserDataModel
     @State var emailTxt = ""
     @State var passwordTxt = ""
@@ -33,7 +34,7 @@ struct SignInView : View {
             Button(action: {
                 self.signIn(email: self.emailTxt, password: self.passwordTxt)
             }) {
-                Text("Sign In")
+                return Text("Sign In")
             }
                 .padding()
                 .frame(width: 200)
@@ -41,14 +42,18 @@ struct SignInView : View {
                 .cornerRadius(40)
                 .shadow(radius: 4)
                 .accentColor(.white)
+                .padding(.bottom)
             Divider()
-            GoogleSignInButton { uid in
+            GoogleSignInButton(colorScheme: self.colorScheme) { uid in
                 self.userDataModel.uid = uid
                 self.userDataModel.loadTrackedArtists()
-                }
-                .frame(width: 100)
+            }
+                .frame(width: 150)
                 .padding(.top)
             Spacer()
+            PresentationButton(destination: CreateAccountView(userDataModel: userDataModel)) {
+                Text("Create an account")
+            }
         }
     }
     
@@ -59,7 +64,9 @@ struct SignInView : View {
                 return
             }
             if let result = res {
-                self.userDataModel.uid = res?.user.uid
+                print(result.user.uid)
+                self.userDataModel.uid = result.user.uid
+                self.userDataModel.loadTrackedArtists()
             }
         }
     }

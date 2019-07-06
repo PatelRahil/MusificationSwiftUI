@@ -12,9 +12,12 @@ import GoogleSignIn
 import SwiftUI
 
 struct GoogleSignInButton: UIViewRepresentable {
+    var colorScheme: ColorScheme
     let onSignIn: (String) -> Void
     func makeUIView(context: Context) -> GIDSignInButton {
         let btn = GIDSignInButton()
+        btn.colorScheme = colorScheme == .dark ? .dark : .light
+        btn.style = .standard
         return btn
     }
     func updateUIView(_ uiView: GIDSignInButton, context: Context) {
@@ -31,7 +34,7 @@ struct GoogleSignInButton: UIViewRepresentable {
             super.init()
             GIDSignIn.sharedInstance()?.uiDelegate = self
             GIDSignIn.sharedInstance()?.delegate = self
-            //GIDSignIn.sharedInstance()?.signInSilently()
+            GIDSignIn.sharedInstance()?.signInSilently()
         }
         func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
             
