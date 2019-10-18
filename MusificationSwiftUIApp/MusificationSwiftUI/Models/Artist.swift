@@ -65,8 +65,6 @@ class Artist: DataParsable {
         print("URL string is invalid: \(self.appleMusicUrlString)?")
         if let url = URL(string: self.appleMusicUrlString) {
             UIApplication.shared.open(url)
-            //let svc = SFSafariViewController(url: url)
-            //controller.present(svc, animated: true, completion: nil)
         }
         
     }
