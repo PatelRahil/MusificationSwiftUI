@@ -14,7 +14,7 @@ struct TrackedArtistsView : View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(dataModel.trackedArtists.identified(by: \.self)) { artist in
+                    ForEach(dataModel.trackedArtists, id: \.self) { artist in
                         ArtistListItem(artist: artist)
                     }
                 }

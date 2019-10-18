@@ -13,7 +13,7 @@ struct GenresView : View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(genres.identified(by: \.id)) { genre in
+                ForEach(genres, id: \.id) { genre in
                     GenreListItem(genre: genre)
                 }
             }

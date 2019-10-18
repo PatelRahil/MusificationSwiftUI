@@ -10,8 +10,8 @@ import SwiftUI
 
 struct ArtistInfoView : View {
     @Binding var artist: Artist
-    @ObjectBinding var viewModel: ContentViewModel
-    @ObjectBinding var dataModel: UserDataModel
+    @ObservedObject var viewModel: ContentViewModel
+    @ObservedObject var dataModel: UserDataModel
     var isTracking: Binding<Bool>
     var body: some View {
         

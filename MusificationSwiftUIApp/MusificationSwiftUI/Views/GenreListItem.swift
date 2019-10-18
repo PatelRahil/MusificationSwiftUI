@@ -11,7 +11,7 @@ import SwiftUI
 struct GenreListItem : View {
     var genre: Genre
     var body: some View {
-        NavigationButton(destination: GenreInfoView(genre: genre)) {
+        NavigationLink(destination: GenreInfoView(genre: genre)) {
             Text(genre.name)
         }
     }

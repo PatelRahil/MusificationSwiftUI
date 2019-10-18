@@ -11,15 +11,19 @@ import SwiftUI
 struct AlbumsList : View {
     @Binding var albums: [Album]
     var body: some View {
-        ScrollView(isScrollEnabled: true, alwaysBounceHorizontal: true, alwaysBounceVertical: false, showsHorizontalIndicator: true, showsVerticalIndicator: false) {
+        ScrollView([.horizontal], showsIndicators: true) {
             HStack {
-                ForEach(albums.identified(by: \.id)) { album in
-                    AlbumButton(album: album)
-                        .shadow(radius: Length(albumShadowRadius))
-                    .padding()
+                ForEach(albums, id: \.id) { album in
+                    self.albumButton(album: album)
                 }
-            }.frame(height: Length(albumSize + 2 * albumShadowRadius))
+            }.frame(height: CGFloat(albumSize + 2 * albumShadowRadius))
         }
+    }
+    func albumButton(album: Album) -> some View {
+        let button = AlbumButton(album: album)
+        .shadow(radius: CGFloat(albumShadowRadius))
+        .padding()
+        return button
     }
 }
 

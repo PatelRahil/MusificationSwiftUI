@@ -14,18 +14,20 @@ struct ArtistsView : View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField($searchString, placeholder: Text("Search Artists"), onEditingChanged: { (changed) in
+                TextField("Search Artists", text: $searchString, onEditingChanged: { (changed) in
                     self.viewModel.searchArtists(with: self.searchString)
-                })
-                .padding().textFieldStyle(.roundedBorder)
+                }) {
+                    
+                }
+                .padding().textFieldStyle(RoundedBorderTextFieldStyle())
                 Divider()
                 List {
-                    ForEach(viewModel.searchedArtists.identified(by: \.id)) { artist in
+                    ForEach(viewModel.searchedArtists, id: \.id) { artist in
                         ArtistListItem(artist: artist)
                     }
                 }
             }
-            .navigationBarTitle(Text("Find Artists"))
+            .navigationBarTitle("Find Artists")
         }
     }
 }

@@ -19,27 +19,28 @@ struct CreateAccountView : View {
         VStack {
             VStack(alignment: .leading) {
                 Text("Email").font(.headline)
-                TextField($emailTxt, placeholder: Text("johndoe@email.com"), onEditingChanged: { _ in }) {}
+                TextField("johndoe@email.com", text: $emailTxt)
                     .padding()
                 Text("Password").font(.headline)
-                SecureField($passwordTxt, placeholder: Text("Must be 6 or more characters")) {}
+                SecureField("Must be 6 or more characters", text: $passwordTxt)
                     .padding()
                 Text("Confirm Password").font(.headline)
-                SecureField($repeatPasswordTxt, placeholder: Text("Must be 6 or more characters")) {}
+                SecureField("Must be 6 or more characters", text: $repeatPasswordTxt)
                     .padding()
-            }.padding(.leading, 20)
+            }.padding(.leading, CGFloat(20))
             Button(action: { self.signUp() }) {
-                Text("Create Account").padding([.top, .bottom], 20)
+                Text("Create Account")
+                    .padding([.top, .bottom], 20)
                     .padding([.leading, .trailing], 40)
             }
                 .background(Palette.primaryColor)
-                .cornerRadius(40)
+                .cornerRadius(CGFloat(40))
                 .padding()
                 .accentColor(.white)
             Text(errorMsg)
                 .multilineTextAlignment(.center)
                 .lineLimit(nil)
-                .padding([.leading, .trailing], 20)
+                //.padding([.leading, .trailing], 20)
             
         }
     }

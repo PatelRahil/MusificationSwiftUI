@@ -10,50 +10,14 @@ import Foundation
 import SwiftUI
 import Combine
 
-final class ContentViewModel: BindableObject {
+final class ContentViewModel: ObservableObject {
     var didChange = PassthroughSubject<ContentViewModel, Never>()
-    var trackedArtists: [Artist] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.didChange.send(self)
-            }
-        }
-    }
-    var genres: [Genre] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.didChange.send(self)
-            }
-        }
-    }
-    var searchedArtists: [Artist] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.didChange.send(self)
-            }
-        }
-    }
-    var displayedAlbums: [Album] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.didChange.send(self)
-            }
-        }
-    }
-    var displayedSongs: [Song] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.didChange.send(self)
-            }
-        }
-    }
-    var selectedArtist: Artist = Artist() {
-        didSet {
-            DispatchQueue.main.async {
-                self.didChange.send(self)
-            }
-        }
-    }
+    @Published var trackedArtists: [Artist] = []
+    @Published var genres: [Genre] = []
+    @Published var searchedArtists: [Artist] = []
+    @Published var displayedAlbums: [Album] = []
+    @Published var displayedSongs: [Song] = []
+    @Published var selectedArtist: Artist = Artist()
     
     
     

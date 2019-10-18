@@ -10,25 +10,13 @@ import Foundation
 import SwiftUI
 import Combine
 
-final class UserDataModel: BindableObject {
+final class UserDataModel: ObservableObject {
     private var dbUserRoot = "/Users"
     var didChange = PassthroughSubject<UserDataModel, Never>()
-    var trackedArtists: [Artist] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.didChange.send(self)
-            }
-        }
-    }
-    var uid: String? {
-        didSet {
-            DispatchQueue.main.async {
-                self.didChange.send(self)
-            }
-        }
-    }
+    @Published var trackedArtists: [Artist] = []
+    @Published var uid: String?
     func isTrackingBinding(for artist: Artist) -> Binding<Bool> {
-        return Binding(getValue: {
+        return Binding(get: {
             return self.trackedArtists.contains(artist)
         }) { (track) in
             if track {

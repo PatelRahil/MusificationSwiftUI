@@ -15,15 +15,21 @@ struct ContentView : View {
     var body: some View {
         Group {
             if userDataModel.uid != nil {
-                TabbedView {
+                TabView {
                         TrackedArtistsView()
-                            .tabItemLabel(Text("Tracked"))
+                            .tabItem({
+                                Text("Tracked")
+                            })
                             .tag(0)
                         GenresView(genres: $viewModel.genres)
-                            .tabItemLabel(Text("Genres"))
+                            .tabItem({
+                                Text("Genres")
+                            })
                             .tag(1)
                         ArtistsView()
-                            .tabItemLabel(Text("Artists"))
+                            .tabItem({
+                                Text("Artists")
+                            })
                             .tag(2)
                 }
             } else {

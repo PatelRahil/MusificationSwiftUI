@@ -17,19 +17,15 @@ struct SignInView : View {
     var body: some View {
         VStack {
             Spacer()
-            TextField($emailTxt, placeholder: Text("Email"), onEditingChanged: { (changed) in
-                
-            }) {
-                
-            }
+            TextField("Email", text: $emailTxt)
+            .padding()
+            .cornerRadius(10)
+            .border(Color.primary)
+            .padding([.leading, .trailing])
+            SecureField("Password", text: $passwordTxt)
                 .padding()
-                .border(Color.primary, cornerRadius: 10)
-                .padding([.leading, .trailing])
-            SecureField($passwordTxt, placeholder: Text("Password"), onCommit: {
-                
-            })
-                .padding()
-                .border(Color.primary, cornerRadius: 10)
+                .cornerRadius(10)
+                .border(Color.primary)
                 .padding([.leading, .trailing])
             Button(action: {
                 self.signIn(email: self.emailTxt, password: self.passwordTxt)
@@ -51,7 +47,7 @@ struct SignInView : View {
                 .frame(width: 150)
                 .padding(.top)
             Spacer()
-            PresentationButton(destination: CreateAccountView(userDataModel: userDataModel)) {
+            NavigationLink(destination: CreateAccountView(userDataModel: userDataModel)) {
                 Text("Create an account")
             }
         }

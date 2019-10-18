@@ -22,9 +22,9 @@ struct ArtistListItem : View {
                 Spacer()
                 Image(systemName: "info.circle.fill").foregroundColor(.gray)
             }
-        }.presentation(isPresented ? Modal(ArtistInfoView(artist: $artist, viewModel: viewModel, dataModel: dataModel, isTracking: dataModel.isTrackingBinding(for: artist)), onDismiss: {
-            self.isPresented = false
-        }) : nil)
+        }.sheet(isPresented: $isPresented) {
+            ArtistInfoView(artist: self.$artist, viewModel: self.viewModel, dataModel: self.dataModel, isTracking: self.dataModel.isTrackingBinding(for: self.artist))
+        }
     }
 }
 

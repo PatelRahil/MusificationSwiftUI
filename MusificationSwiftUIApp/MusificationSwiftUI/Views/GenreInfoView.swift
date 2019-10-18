@@ -14,7 +14,7 @@ struct GenreInfoView : View {
     @State var numSongs = defaultSongItemsLimit
     var body: some View {
         List {
-            ForEach(viewModel.displayedSongs.identified(by: \.name)) { song in
+            ForEach(viewModel.displayedSongs, id: \.name) { song in
                 SongListItem(song: song)
             }
             if self.numSongs < 180 {
@@ -24,7 +24,7 @@ struct GenreInfoView : View {
                 }) {
                     HStack {
                         Spacer()
-                        Text("More").color(.blue)
+                        Text("More").foregroundColor(.blue)
                         Spacer()
                     }
                 }

@@ -29,9 +29,9 @@ struct SongListItem : View {
                 Image(systemName: "info.circle.fill").foregroundColor(.gray)
             }
         }
-        .presentation(artistLoaded ? Modal(ArtistInfoView(artist: $viewModel.selectedArtist, viewModel: viewModel, dataModel: dataModel, isTracking: dataModel.isTrackingBinding(for: viewModel.selectedArtist)), onDismiss: {
-                self.artistLoaded = false
-            }) : nil)
+        .sheet(isPresented: $artistLoaded, content: {
+            ArtistInfoView(artist: self.$viewModel.selectedArtist, viewModel: self.viewModel, dataModel: self.dataModel, isTracking: self.dataModel.isTrackingBinding(for: self.viewModel.selectedArtist))
+        })
     }
 }
 
