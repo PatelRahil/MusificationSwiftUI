@@ -51,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         let appleMusicAPIKey = keys["apple_music"]!
         APIKeys.AppleMusicKey = appleMusicAPIKey
+        print(appleMusicAPIKey)
         
         FirebaseApp.configure()
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID

@@ -26,7 +26,7 @@ final class ContentViewModel: ObservableObject {
     }
     func fetchGenres() {
         MusicRequest.getGenres(success: { genres in
-            self.genres = genres
+            DispatchQueue.main.async { self.genres = genres }
         }) { (error) in
             print(error.localizedDescription)
         }

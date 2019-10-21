@@ -34,7 +34,7 @@ final class UserDataModel: ObservableObject {
             guard let userData = snapshot.value as? [String: Any] else { return }
             guard let trackedArtistIds = userData["trackedArtists"] as? [String] else { return }
             self.getTrackedArtists(ids: trackedArtistIds, success: { artists in
-                self.trackedArtists = artists
+                DispatchQueue.main.async { self.trackedArtists = artists }
             })
         }
     }

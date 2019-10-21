@@ -24,14 +24,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         contentModel.fetchGenres()
         let userDataModel = UserDataModel()
         // Use a UIHostingController as window root view controller
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UIHostingController(
-            rootView: ContentView()
-                .environmentObject(contentModel)
-                .environmentObject(userDataModel)
-        )
-        self.window = window
-        window.makeKeyAndVisible()
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = UIHostingController(
+                rootView: ContentView()
+                    .environmentObject(contentModel)
+                    .environmentObject(userDataModel)
+            )
+            self.window = window
+            window.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

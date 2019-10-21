@@ -33,7 +33,9 @@ struct ContentView : View {
                             .tag(2)
                 }
             } else {
-                SignInView()
+                NavigationView {
+                    SignInView()
+                }
             }
         }
     }

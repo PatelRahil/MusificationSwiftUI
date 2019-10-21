@@ -15,7 +15,7 @@ struct ArtistInfoView : View {
     var isTracking: Binding<Bool>
     var body: some View {
         
-        return VStack {
+        VStack {
             Text(artist.name).bold().font(.largeTitle).padding()
             Divider()
             Toggle(isOn: isTracking) {
