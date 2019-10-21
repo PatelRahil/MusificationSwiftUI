@@ -76,7 +76,7 @@
 		5AA62F6722B598730098FB5C /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		5AA62F6922B599870098FB5C /* keys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = keys.json; sourceTree = "<group>"; };
 		5AD1AEE522D030620013B7EC /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
-		5AF6475E22A8349900873ACD /* MusificationSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusificationSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AF6475E22A8349900873ACD /* Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF6476122A8349900873ACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AF6476322A8349900873ACD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5AF6476522A8349900873ACD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		5AF6475F22A8349900873ACD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5AF6475E22A8349900873ACD /* MusificationSwiftUI.app */,
+				5AF6475E22A8349900873ACD /* Radar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 			);
 			name = MusificationSwiftUI;
 			productName = MusificationSwiftUI;
-			productReference = 5AF6475E22A8349900873ACD /* MusificationSwiftUI.app */;
+			productReference = 5AF6475E22A8349900873ACD /* Radar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -537,15 +537,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "MusificationSwiftUI/Preview\\ Content";
-				DEVELOPMENT_TEAM = H9E6SLMQ79;
+				DEVELOPMENT_TEAM = 5XC5483PFF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MusificationSwiftUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = self.Rahil.MusificationSwiftUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = self.Rahil.Radar;
+				PRODUCT_NAME = Radar;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -558,15 +558,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "MusificationSwiftUI/Preview\\ Content";
-				DEVELOPMENT_TEAM = H9E6SLMQ79;
+				DEVELOPMENT_TEAM = 5XC5483PFF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MusificationSwiftUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = self.Rahil.MusificationSwiftUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = self.Rahil.Radar;
+				PRODUCT_NAME = Radar;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

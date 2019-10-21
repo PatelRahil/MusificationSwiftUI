@@ -18,16 +18,19 @@ struct ContentView : View {
                 TabView {
                         TrackedArtistsView()
                             .tabItem({
+                                Image(systemName: "location")
                                 Text("Tracked")
                             })
                             .tag(0)
                         GenresView(genres: $viewModel.genres)
                             .tabItem({
+                                Image(systemName: "globe")
                                 Text("Genres")
                             })
                             .tag(1)
                         ArtistsView()
                             .tabItem({
+                                Image(systemName: "person")
                                 Text("Artists")
                             })
                             .tag(2)

@@ -33,28 +33,36 @@ final class ContentViewModel: ObservableObject {
     }
     func searchArtists(with prefix: String, limit: Int = defaultSongItemsLimit) {
         MusicRequest.getArtistsStarting(with: prefix, limit: limit, success: { artists in
-            self.searchedArtists = artists
+            DispatchQueue.main.async {
+                self.searchedArtists = artists
+            }
         }) { (error) in
             print(error.localizedDescription)
         }
     }
     func fetchAlbums(for artist: Artist) {
         artist.downloadAlbums(success: { albums in
-            self.displayedAlbums = albums
+            DispatchQueue.main.async {
+                self.displayedAlbums = albums
+            }
         }) { error in
             print(error.localizedDescription)
         }
     }
     func fetchSongs(for genre: Genre, limit: Int) {
         MusicRequest.getSongs(genreID: genre.id, limit: limit, success: { songs in
-            self.displayedSongs = songs
+            DispatchQueue.main.async {
+                self.displayedSongs = songs
+            }
         }) { error in
             print(error.localizedDescription)
         }
     }
     func fetchArtist(named: String, success: @escaping () -> Void) {
         MusicRequest.getArtist(artistName: named, success: { artist in
-            self.selectedArtist = artist
+            DispatchQueue.main.async {
+                self.selectedArtist = artist
+            }
             success()
         }) { error in
             print(error.localizedDescription)

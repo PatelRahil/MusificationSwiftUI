@@ -15,7 +15,7 @@ struct AppleMusicButton : View {
             self.openURL()
         }) {
             VStack {
-                Image(systemName: "music")
+                Image(systemName: "music.note")
                 Text("Apple Music")
             }
         }

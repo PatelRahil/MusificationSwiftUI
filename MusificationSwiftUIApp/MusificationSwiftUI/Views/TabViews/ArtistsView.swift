@@ -14,8 +14,13 @@ struct ArtistsView : View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Search Artists", text: $searchString, onEditingChanged: { (changed) in
-                    self.viewModel.searchArtists(with: self.searchString)
+                TextField("Search Artists", text: Binding(get: {
+                    self.searchString
+                }, set: { (newVal) in
+                    self.searchString = newVal
+                    self.viewModel.searchArtists(with: newVal)
+                }), onEditingChanged: { (changed) in
+                    //self.viewModel.searchArtists(with: self.searchString)
                 }) {
                     
                 }
