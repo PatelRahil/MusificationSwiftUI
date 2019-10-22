@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import Firebase
 
 final class UserDataModel: ObservableObject {
     private var dbUserRoot = "/Users"
@@ -36,6 +37,15 @@ final class UserDataModel: ObservableObject {
             self.getTrackedArtists(ids: trackedArtistIds, success: { artists in
                 DispatchQueue.main.async { self.trackedArtists = artists }
             })
+        }
+    }
+    static func updatePushToken(for uid: String) {
+        InstanceID.instanceID().instanceID { (res, err) in
+            if let res = res {
+                print("Token ID: \(res.token)")
+                let requester = FirebaseRequest()
+                requester.uploadData(path: "/Users/\(uid)/pushToken", value: res.token)
+            }
         }
     }
     private func getTrackedArtists(ids: [String], success: @escaping ([Artist]) -> Void) {

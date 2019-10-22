@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import GoogleSignIn
 import SwiftUI
+import Firebase
 
 struct GoogleSignInButton: UIViewRepresentable {
     var colorScheme: ColorScheme

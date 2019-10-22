@@ -34,12 +34,14 @@ struct ContentView : View {
                                 Text("Artists")
                             })
                             .tag(2)
-                }
+                }.navigationViewStyle(StackNavigationViewStyle())
             } else {
                 NavigationView {
                     SignInView()
-                }
+                }.navigationViewStyle(StackNavigationViewStyle())
             }
+        }.onAppear {
+            print("Content View appeared, id = \(self.userDataModel.uid ?? "No user id")")
         }
     }
 }

@@ -43,6 +43,7 @@ struct SignInView : View {
             GoogleSignInButton(colorScheme: self.colorScheme) { uid in
                 self.userDataModel.uid = uid
                 self.userDataModel.loadTrackedArtists()
+                UserDataModel.updatePushToken(for: uid)
             }
                 .frame(width: 150)
                 .padding(.top)
@@ -50,6 +51,8 @@ struct SignInView : View {
             NavigationLink(destination: CreateAccountView(userDataModel: userDataModel)) {
                 Text("Create an account")
             }
+        }.onAppear {
+            print("SignInView appeared")
         }
     }
     

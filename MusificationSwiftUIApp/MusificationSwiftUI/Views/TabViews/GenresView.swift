@@ -18,6 +18,8 @@ struct GenresView : View {
                 }
             }
             .navigationBarTitle(Text("Explore Genres"))
+        }.onAppear {
+            print("GenresView appeared")
         }
     }
 }
