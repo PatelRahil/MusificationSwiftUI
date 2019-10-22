@@ -18,12 +18,9 @@ const key = require(keyPath).apple_music
 // });
 
 exports.updatePushArtistsList = functions.database.ref('/Users/{uid}').onWrite((change, context) => {
-	console.log('Updating push artists list...')
 	const before = change.before.val()['trackedArtists'] ? change.before.val()['trackedArtists'] : null
 	const after = change.after.val()['trackedArtists'] ? change.after.val()['trackedArtists'] : null
 	const remove = before === null ? false : after === null ? true : before.length > after.length
-	console.log('CONTEXT: ', context)
-	console.log('change before: ', before)
 	if (!change.before.val()['pushToken'] || !change.after.val()['pushToken'] || change.before.val()['pushToken'] !== change.after.val()['pushToken']) {
 		// Function was triggered by push token being changed
 		// Makes assumption that trackedArtists won't change at the same time as pushToken changing
@@ -31,14 +28,11 @@ exports.updatePushArtistsList = functions.database.ref('/Users/{uid}').onWrite((
 		return 1
 	}
 	var pushID  = change.before.val()['pushToken']
-	console.log('pushID: ', pushID)
-	console.log('new artist added')
 	var diff = before ? after.filter(i => (before.indexOf(i) < 0)) : after
 	if (diff.length === 0) {
 		diff = after ? before.filter(i => (after.indexOf(i) < 0)) : before
 	}
 	return admin.database().ref('/TrackingAppleArtists').once('value', (snap) => {
-		console.log('Tracked apple artists: \n', snap.val(), '\ndiff:\n', diff)
 		var val = snap.val()
 
 		if (diff.length === 0) {
@@ -59,7 +53,6 @@ exports.updatePushArtistsList = functions.database.ref('/Users/{uid}').onWrite((
 			// no one can untrack them
 			tokens = [pushID]
 		}
-		console.log(context.params.uid, '\n', before, '\n', after, '\nTokens:\n', tokens)
 		return admin.database().ref('/TrackingAppleArtists/' + newArtistID + '/pushTokens').set(tokens)
 	})
 })
@@ -76,7 +69,6 @@ exports.updateArtistRecentSong = functions.database.ref('/TrackingAppleArtists/{
 	const url = 'https://api.music.apple.com/v1/catalog/us/artists/' + artistId + '/songs'
 	return fetch(url, { method: 'GET', headers: { 'Authorization': 'Bearer ' + key }}).then((res) => {
 		let json = res.json()
-		console.log(json)
 		return json
 	}).then(res => {
 		const data = res['data']
@@ -144,10 +136,7 @@ exports.sendPushForNewSongs = functions.database.ref('/ArtistsMostRecentSong/{id
         	}
       	}
       	const tokens = snap.val()
-      	console.log('Payload: ', payload)
-      	console.log('Tokens', tokens)
       	return admin.messaging().sendToDevice(tokens, payload).then(res => {
-      		console.log(res['results'][0]['error'])
       		return res
       	})
 
@@ -196,7 +185,6 @@ exports.updatePushTokens = functions.database.ref('/Users/{uid}/pushToken').onWr
 
 exports.testDiffArtists = functions.https.onRequest((req, res) => {
 	admin.database().ref('/ArtistsMostRecentSong').once('value', (snap) => {
-		console.log(snap.val())
 		if (!snap.val()) {
 			res.status(200).send('No artists to diff')
 			return false
@@ -213,20 +201,17 @@ exports.testDiffArtists = functions.https.onRequest((req, res) => {
 			const url = 'https://api.music.apple.com/v1/catalog/us/artists/' + keys[i] + '/songs'
 			promises.push(fetch(url, { method: 'GET', headers: { 'Authorization': 'Bearer ' + key }}).then((res) => {
 				let json = res.json()
-				console.log(json)
 				return json
 			}))
 		}
 		return Promise.all(promises).then( (result) => {
 			result.shift()
-			console.log(result)
 			var dicts = {}
 			var changes = {}
 			for (let i = 0; i < result.length; i++) {
 				let id = keys[i]
 				let artist = result[i]['data']
 				dicts[id] = []
-				console.log('val: ', val[id])
 				var newestId = val[id][0]['songId']
 				var newestDate = new Date(Date.parse(val[id][0]['date']))
 				var newestArtistName = val[id][0]['artistName'] === null ? "" : val[id][0]['artistName']
@@ -237,8 +222,6 @@ exports.testDiffArtists = functions.https.onRequest((req, res) => {
 					let date = new Date(Date.parse(song['attributes']['releaseDate']))
 					let artistName = song['attributes']['artistName']
 					let songName = song['attributes']['name']
-					console.log('Date: ', date)
-					console.log('Newest Date: ', newestDate)
 					if (date > newestDate) {
 						// This is the case where one of the incoming songs is newer than the previously checked songs.
 						// newestDate is initially the date of the song currently listed as most recent in the database.
