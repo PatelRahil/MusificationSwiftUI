@@ -105,6 +105,32 @@ exports.updateArtistRecentSong = functions.database.ref('/TrackingAppleArtists/{
 	})
 })
 
+exports.sendPushForNewSongs = functions.database.ref('/ArtistsMostRecentSong/{id}').onWrite((change, context) => {
+	if (!change.before.exists()) {
+		// Don't do anything if the artist was just now added to the list
+		// That is the only scenario that this ref's value should change, other than if there is a new song releaesed.
+		return 1
+	}
+	const id = context['params']['id']
+	return admin.database().ref('/TrackingAppleArtists/' + id + '/pushTokens').once('value', (snap) => {
+		const payload = {
+        	notification: {
+          		title: 'Artist ' + id + ' came out with a new song!',
+          		body: 'The new song\'s id is ' + change.after.val()[0]['songId'] + ' and it was released on ' + change.after.val()[0]['date']
+          		// icon: follower.photoURL
+        	}
+      	}
+      	const tokens = snap.val()
+      	console.log('Payload: ', payload)
+      	console.log('Tokens', tokens)
+      	return admin.messaging().sendToDevice(tokens, payload).then(res => {
+      		console.log(res['results'][0]['error'])
+      		return res
+      	})
+
+	})
+})
+
 exports.testDiffArtists = functions.https.onRequest((req, res) => {
 	admin.database().ref('/ArtistsMostRecentSong').once('value', (snap) => {
 		console.log(snap.val())
