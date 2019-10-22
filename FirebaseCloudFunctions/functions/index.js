@@ -95,7 +95,7 @@ exports.updateArtistRecentSong = functions.database.ref('/TrackingAppleArtists/{
 				newestDate = date
 			} else if (date.toString() === newestDate.toString()) {
 				let dateStr = date.toISOString().split('T')[0]
-				newestSongs.append({
+				newestSongs.push({
 					'songId': songId,
 					'date': dateStr
 				})
