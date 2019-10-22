@@ -19,23 +19,23 @@ const key = require(keyPath).apple_music
 
 exports.updatePushArtistsList = functions.database.ref('/Users/{uid}').onWrite((change, context) => {
 	console.log('Updating push artists list...')
-	const before = change.before.exists() ? change.before.val() : null
-	const after = change.after.exists() ? change.after.val() : null
-	const remove = before.length > after.length
+	const before = change.before.val()['trackedArtists'] ? change.before.val()['trackedArtists'] : null
+	const after = change.after.val()['trackedArtists'] ? change.after.val()['trackedArtists'] : null
+	const remove = before === null ? false : after === null ? true : before.length > after.length
 	console.log('CONTEXT: ', context)
 	console.log('change before: ', before)
-	if (!before['pushToken'] || !after['pushToken'] || before['pushToken'] !== after['pushToken']) {
+	if (!change.before.val()['pushToken'] || !change.after.val()['pushToken'] || change.before.val()['pushToken'] !== change.after.val()['pushToken']) {
 		// Function was triggered by push token being changed
 		// Makes assumption that trackedArtists won't change at the same time as pushToken changing
 		// And assumption that trackedArtists won't change if pushToken is added for the first time or removed, or the user does not have a pushToken
 		return 1
 	}
-	var pushID  = before['pushToken']
+	var pushID  = change.before.val()['pushToken']
 	console.log('pushID: ', pushID)
 	console.log('new artist added')
-	var diff = after['trackedArtists'].filter(i => (before['trackedArtists'].indexOf(i) < 0))
+	var diff = before ? after.filter(i => (before.indexOf(i) < 0)) : after
 	if (diff.length === 0) {
-		diff = before['trackedArtists'].filter(i => (after['trackedArtists'].indexOf(i) < 0))
+		diff = after ? before.filter(i => (after.indexOf(i) < 0)) : before
 	}
 	return admin.database().ref('/TrackingAppleArtists').once('value', (snap) => {
 		console.log('Tracked apple artists: \n', snap.val(), '\ndiff:\n', diff)
@@ -64,6 +64,47 @@ exports.updatePushArtistsList = functions.database.ref('/Users/{uid}').onWrite((
 	})
 })
 
+// If a new artist is being tracked, this function is called so that the artist is added to the ArtistsMostRecentSong list
+exports.updateArtistRecentSong = functions.database.ref('/TrackingAppleArtists/{artistId}').onWrite((change, context) => {
+	if (change.before.exists()) {
+		// Don't do anything if the artist was there before
+		// This occurs whenever a new push token is added to an already existing artist
+		// This still needs to be tested ( script: have multiple devices add the same artist and see if the rest of this function is run or not )
+		return 1
+	}
+	const artistId = context['params']['artistId']
+	const url = 'https://api.music.apple.com/v1/catalog/us/artists/' + artistId + '/songs'
+	return fetch(url, { method: 'GET', headers: { 'Authorization': 'Bearer ' + key }}).then((res) => {
+		let json = res.json()
+		console.log(json)
+		return json
+	}).then(res => {
+		const data = res['data']
+		newestSongs = []
+		newestDate = null
+		for (let i = 0; i < data.length; i++) {
+			const song = data[i]
+			const songId = song['id']
+			const date = new Date(Date.parse(song['attributes']['releaseDate']))
+			if (newestSongs.length === 0 || date > newestDate) {
+				let dateStr = date.toISOString().split('T')[0]
+				newestSongs = [{
+					'songId': songId,
+					'date': dateStr
+				}]
+				newestDate = date
+			} else if (date.toString() === newestDate.toString()) {
+				let dateStr = date.toISOString().split('T')[0]
+				newestSongs.append({
+					'songId': songId,
+					'date': dateStr
+				})
+			}
+		}
+		return admin.database().ref('/ArtistsMostRecentSong/' + artistId).set(newestSongs)
+	})
+})
+
 exports.testDiffArtists = functions.https.onRequest((req, res) => {
 	admin.database().ref('/ArtistsMostRecentSong').once('value', (snap) => {
 		console.log(snap.val())
@@ -80,7 +121,7 @@ exports.testDiffArtists = functions.https.onRequest((req, res) => {
   			"Authorization": 'Bearer ' + key
 		}
 		for (let i = 0; i < keys.length; i++) {
-			url = 'https://api.music.apple.com/v1/catalog/us/artists/' + keys[i] + '/songs'
+			const url = 'https://api.music.apple.com/v1/catalog/us/artists/' + keys[i] + '/songs'
 			promises.push(fetch(url, { method: 'GET', headers: { 'Authorization': 'Bearer ' + key }}).then((res) => {
 				let json = res.json()
 				console.log(json)
