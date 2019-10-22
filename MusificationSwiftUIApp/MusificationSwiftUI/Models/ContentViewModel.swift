@@ -18,6 +18,8 @@ final class ContentViewModel: ObservableObject {
     @Published var displayedAlbums: [Album] = []
     @Published var displayedSongs: [Song] = []
     @Published var selectedArtist: Artist = Artist()
+    @Published var recentSongs: [Song] = []
+    @Published var recentDate: String = ""
     
     
     
@@ -67,5 +69,21 @@ final class ContentViewModel: ObservableObject {
         }) { error in
             print(error.localizedDescription)
         }
+    }
+    
+    func getRecentSongs(for artist: Artist) {
+        let req = FirebaseRequest()
+        req.getRecentSongs(for: artist.id) { (songs, date) in
+            DispatchQueue.main.async {
+                self.recentDate = date
+                self.recentSongs = songs
+            }
+        }
+    }
+    func resetSelectedArtist() {
+        self.selectedArtist = Artist()
+        self.recentSongs = []
+        self.recentDate = ""
+        self.displayedAlbums = []
     }
 }

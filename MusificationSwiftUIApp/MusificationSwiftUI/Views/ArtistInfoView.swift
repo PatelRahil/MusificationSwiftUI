@@ -28,14 +28,37 @@ struct ArtistInfoView : View {
                 Text("Albums").font(.headline).padding()
                 Spacer()
             }
-            AlbumsList(albums: $viewModel.displayedAlbums)
+            AlbumsList(albums: $viewModel.displayedAlbums).animation(.easeIn)
             Divider()
+            if viewModel.recentSongs.count > 0 {
+                Group {
+                    HStack {
+                        Text("Most Recent Song\(viewModel.recentSongs.count == 1 ? "" : "s") (Released on \(viewModel.recentDate))").font(.headline).padding()
+                        Spacer()
+                    }
+                    List(viewModel.recentSongs, id: \.name) { song in
+                        HStack {
+                            Text(song.name).padding()
+                            Spacer()
+                        }
+                    }
+                    Divider()
+                }.animation(.easeIn)
+            }
             AppleMusicButton(openURL: artist.openURL).padding()
             Spacer()
         }
         .navigationBarTitle(Text(artist.name))
-            .onAppear {
+        .onAppear {
+            withAnimation {
                 self.viewModel.fetchAlbums(for: self.artist)
+                self.viewModel.getRecentSongs(for: self.artist)
+            }
+        }
+        .onDisappear {
+            withAnimation {
+                self.viewModel.resetSelectedArtist()
+            }
         }
         
     }
