@@ -131,6 +131,46 @@ exports.sendPushForNewSongs = functions.database.ref('/ArtistsMostRecentSong/{id
 	})
 })
 
+exports.updatePushTokens = functions.database.ref('/Users/{uid}/pushToken').onWrite((change, context) => {
+	if (!change.before.exists()) {
+		// There was no push token for this user before
+		return 1
+	}
+	let oldToken = change.before.val()
+	let newToken = change.after.exists() ? change.after.val() : null
+	let uid = context['params']['uid']
+	return admin.database().ref('/Users/' + uid + '/trackedArtists').once('value', (snap) => {
+		let artistIds = snap.val()
+		var promises = []
+		for (let i = 0; i < artistIds.length; i++) {
+			artistId = artistIds[i]
+			promises.push(admin.database().ref('/TrackingAppleArtists/' + artistId + '/pushTokens').once('value', (snapshot) => {
+				return snapshot.val()
+			}).then(res => {
+				return res
+			}))
+		}
+		return Promise.all(promises).then( (res) => {
+
+			console.log("RES: ", res[0].val())
+			for (let i = 0; i < res.length; i++) {
+				let artist = res[i].val()
+				let artistId = artistIds[i]
+				var tokens = []
+				for (let j = 0; j < artist.length; j++) {
+					let token = artist[j]
+					if (token !== oldToken) {
+						tokens.push(token)
+					}
+				}
+				tokens.push(newToken)
+				admin.database().ref('/TrackingAppleArtists/' + artistId + '/pushTokens').set(tokens)
+			}
+			return res[0].val()
+		})
+	})
+})
+
 exports.testDiffArtists = functions.https.onRequest((req, res) => {
 	admin.database().ref('/ArtistsMostRecentSong').once('value', (snap) => {
 		console.log(snap.val())
