@@ -17,17 +17,25 @@ const key = require(keyPath).apple_music
 //  response.send("Hello from Firebase!");
 // });
 
-exports.updatePushArtistsList = functions.database.ref('/Users/{uid}/trackedArtists').onWrite((change, context) => {
+exports.updatePushArtistsList = functions.database.ref('/Users/{uid}').onWrite((change, context) => {
 	console.log('Updating push artists list...')
-	var pushID  = "00009" // temp, for testing
 	const before = change.before.exists() ? change.before.val() : null
 	const after = change.after.exists() ? change.after.val() : null
 	const remove = before.length > after.length
-
+	console.log('CONTEXT: ', context)
+	console.log('change before: ', before)
+	if (!before['pushToken'] || !after['pushToken'] || before['pushToken'] !== after['pushToken']) {
+		// Function was triggered by push token being changed
+		// Makes assumption that trackedArtists won't change at the same time as pushToken changing
+		// And assumption that trackedArtists won't change if pushToken is added for the first time or removed, or the user does not have a pushToken
+		return 1
+	}
+	var pushID  = before['pushToken']
+	console.log('pushID: ', pushID)
 	console.log('new artist added')
-	var diff = after.filter(i => (before.indexOf(i) < 0))
+	var diff = after['trackedArtists'].filter(i => (before['trackedArtists'].indexOf(i) < 0))
 	if (diff.length === 0) {
-		diff = before.filter(i => (after.indexOf(i) < 0))
+		diff = before['trackedArtists'].filter(i => (after['trackedArtists'].indexOf(i) < 0))
 	}
 	return admin.database().ref('/TrackingAppleArtists').once('value', (snap) => {
 		console.log('Tracked apple artists: \n', snap.val(), '\ndiff:\n', diff)
