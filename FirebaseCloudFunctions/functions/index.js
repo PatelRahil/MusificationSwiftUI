@@ -86,18 +86,24 @@ exports.updateArtistRecentSong = functions.database.ref('/TrackingAppleArtists/{
 			const song = data[i]
 			const songId = song['id']
 			const date = new Date(Date.parse(song['attributes']['releaseDate']))
+			const artistName = song['attributes']['artistName']
+			const songName = song['attributes']['name']
 			if (newestSongs.length === 0 || date > newestDate) {
 				let dateStr = date.toISOString().split('T')[0]
 				newestSongs = [{
 					'songId': songId,
-					'date': dateStr
+					'date': dateStr,
+					'artistName': artistName,
+					'songName': songName
 				}]
 				newestDate = date
 			} else if (date.toString() === newestDate.toString()) {
 				let dateStr = date.toISOString().split('T')[0]
 				newestSongs.push({
 					'songId': songId,
-					'date': dateStr
+					'date': dateStr,
+					'artistName': artistName,
+					'songName': songName
 				})
 			}
 		}
@@ -113,10 +119,27 @@ exports.sendPushForNewSongs = functions.database.ref('/ArtistsMostRecentSong/{id
 	}
 	const id = context['params']['id']
 	return admin.database().ref('/TrackingAppleArtists/' + id + '/pushTokens').once('value', (snap) => {
+		const val = change.after.val()
+		var body = ""
+		var title = ""
+		if (val.length > 1) {
+			title = val[0]['artistName'] + ' came out with ' + val.length + ' new songs!'
+			body = "The new songs are"
+			for (let i = 0; i < val.length; i++) {
+				if (i === val.length - 1) {
+					body += ' and'
+				}
+				body += ' "' + val[i]['songName'] + '",'
+			}
+			body += ' and they were released on ' + val[0]['date']
+		} else {
+			title = val[0]['artistName'] + ' came out with a new song!'
+			body = 'The new song is "' + val[0]['songName'] + '", and it was released on ' + val[0]['date']
+		}
 		const payload = {
         	notification: {
-          		title: 'Artist ' + id + ' came out with a new song!',
-          		body: 'The new song\'s id is ' + change.after.val()[0]['songId'] + ' and it was released on ' + change.after.val()[0]['date']
+          		title: title,
+          		body: body
           		// icon: follower.photoURL
         	}
       	}
@@ -206,10 +229,14 @@ exports.testDiffArtists = functions.https.onRequest((req, res) => {
 				console.log('val: ', val[id])
 				var newestId = val[id][0]['songId']
 				var newestDate = new Date(Date.parse(val[id][0]['date']))
+				var newestArtistName = val[id][0]['artistName'] === null ? "" : val[id][0]['artistName']
+				var newestSongName = val[id][0]['songName'] === null ? "" : val[id][0]['songName']
 				for (let j = 0; j < artist.length; j++) {
 					let song = artist[j]
 					let songId = song['id']
 					let date = new Date(Date.parse(song['attributes']['releaseDate']))
+					let artistName = song['attributes']['artistName']
+					let songName = song['attributes']['name']
 					console.log('Date: ', date)
 					console.log('Newest Date: ', newestDate)
 					if (date > newestDate) {
@@ -218,7 +245,9 @@ exports.testDiffArtists = functions.https.onRequest((req, res) => {
 						let dateStr = date.toISOString().split('T')[0]
 						changes[id] = [{
 							'songId': songId,
-							'date': dateStr
+							'date': dateStr,
+							'artistName': artistName,
+							'songName': songName
 						}]
 						newestDate = date
 					}
@@ -229,7 +258,9 @@ exports.testDiffArtists = functions.https.onRequest((req, res) => {
 						if (!changes[id] && newestId !== songId) {
 							changes[id] = [{
 								'songId': newestId,
-								'date': dateStr
+								'date': dateStr,
+								'artistName': artistName,
+								'songName': songName
 							}]
 						}
 						if (changes[id] && newestId !== songId) {
@@ -238,7 +269,9 @@ exports.testDiffArtists = functions.https.onRequest((req, res) => {
 							// by checking if !changed[id] once all the songs have been checked.
 							changes[id].push({
 								'songId': songId,
-								'date': dateStr
+								'date': dateStr,
+								'artistName': artistName,
+								'songName': songName
 							})
 						}
 					}
