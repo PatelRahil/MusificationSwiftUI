@@ -11,6 +11,7 @@
 		5A53802122C75A8E007CCE00 /* AlbumsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53802022C75A8E007CCE00 /* AlbumsList.swift */; };
 		5A53802322C75CC7007CCE00 /* AlbumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53802222C75CC7007CCE00 /* AlbumButton.swift */; };
 		5A66863422C9D15800C78C19 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66863322C9D15800C78C19 /* UserDataModel.swift */; };
+		5A7118DA235ED412004A5708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A7118D9235ED412004A5708 /* GoogleService-Info.plist */; };
 		5AA4052A22C7F7A400481FA7 /* GenreListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4052922C7F7A400481FA7 /* GenreListItem.swift */; };
 		5AA4052C22C7F83800481FA7 /* GenreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4052B22C7F83800481FA7 /* GenreInfoView.swift */; };
 		5AA4052E22C7FEF500481FA7 /* SongListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4052D22C7FEF500481FA7 /* SongListItem.swift */; };
@@ -41,7 +42,6 @@
 		5AF6476B22A8349B00873ACD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AF6476A22A8349B00873ACD /* Preview Assets.xcassets */; };
 		5AF6476E22A8349B00873ACD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AF6476C22A8349B00873ACD /* LaunchScreen.storyboard */; };
 		67FDA5E753E59D6486A0EC15 /* Pods_MusificationSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF61BFDEA565CCC4E444C7AD /* Pods_MusificationSwiftUI.framework */; };
-		FB045B5222CFA3E600E0A2CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB045B5122CFA3E600E0A2CB /* GoogleService-Info.plist */; };
 		FB99F85122CFB7210086451C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99F85022CFB7210086451C /* SignInView.swift */; };
 		FB99F85322CFB8100086451C /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99F85222CFB8100086451C /* GoogleSignInButton.swift */; };
 		FB99F85522CFC5A50086451C /* FirebaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99F85422CFC5A50086451C /* FirebaseRequest.swift */; };
@@ -53,6 +53,7 @@
 		5A53802022C75A8E007CCE00 /* AlbumsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsList.swift; sourceTree = "<group>"; };
 		5A53802222C75CC7007CCE00 /* AlbumButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumButton.swift; sourceTree = "<group>"; };
 		5A66863322C9D15800C78C19 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		5A7118D9235ED412004A5708 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5AA4052922C7F7A400481FA7 /* GenreListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListItem.swift; sourceTree = "<group>"; };
 		5AA4052B22C7F83800481FA7 /* GenreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreInfoView.swift; sourceTree = "<group>"; };
 		5AA4052D22C7FEF500481FA7 /* SongListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListItem.swift; sourceTree = "<group>"; };
@@ -76,7 +77,7 @@
 		5AA62F6722B598730098FB5C /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		5AA62F6922B599870098FB5C /* keys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = keys.json; sourceTree = "<group>"; };
 		5AD1AEE522D030620013B7EC /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
-		5AF6475E22A8349900873ACD /* Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AF6475E22A8349900873ACD /* RadarMuse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadarMuse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF6476122A8349900873ACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AF6476322A8349900873ACD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5AF6476522A8349900873ACD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,7 +87,6 @@
 		5AF6476F22A8349B00873ACD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62B0F42D41B7719881AAF091 /* Pods-MusificationSwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusificationSwiftUI.release.xcconfig"; path = "Target Support Files/Pods-MusificationSwiftUI/Pods-MusificationSwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 		CF61BFDEA565CCC4E444C7AD /* Pods_MusificationSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusificationSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB045B5122CFA3E600E0A2CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB99F85022CFB7210086451C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		FB99F85222CFB8100086451C /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		FB99F85422CFC5A50086451C /* FirebaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRequest.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		5AF6475F22A8349900873ACD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5AF6475E22A8349900873ACD /* Radar.app */,
+				5AF6475E22A8349900873ACD /* RadarMuse.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,8 +190,8 @@
 				5AF6478322A834B500873ACD /* Views */,
 				5AF6476722A8349B00873ACD /* Assets.xcassets */,
 				5AF6476C22A8349B00873ACD /* LaunchScreen.storyboard */,
+				5A7118D9235ED412004A5708 /* GoogleService-Info.plist */,
 				5AF6476F22A8349B00873ACD /* Info.plist */,
-				FB045B5122CFA3E600E0A2CB /* GoogleService-Info.plist */,
 				5AF6476922A8349B00873ACD /* Preview Content */,
 			);
 			path = MusificationSwiftUI;
@@ -252,7 +252,7 @@
 			);
 			name = MusificationSwiftUI;
 			productName = MusificationSwiftUI;
-			productReference = 5AF6475E22A8349900873ACD /* Radar.app */;
+			productReference = 5AF6475E22A8349900873ACD /* RadarMuse.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -295,7 +295,7 @@
 			files = (
 				5AF6476E22A8349B00873ACD /* LaunchScreen.storyboard in Resources */,
 				5AA62F6A22B599870098FB5C /* keys.json in Resources */,
-				FB045B5222CFA3E600E0A2CB /* GoogleService-Info.plist in Resources */,
+				5A7118DA235ED412004A5708 /* GoogleService-Info.plist in Resources */,
 				5AF6476B22A8349B00873ACD /* Preview Assets.xcassets in Resources */,
 				5AF6476822A8349B00873ACD /* Assets.xcassets in Resources */,
 			);
@@ -535,17 +535,18 @@
 			baseConfigurationReference = 37104672626220AEAD9D76FF /* Pods-MusificationSwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MusificationSwiftUI/Radar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "MusificationSwiftUI/Preview\\ Content";
-				DEVELOPMENT_TEAM = 5XC5483PFF;
+				DEVELOPMENT_TEAM = H9E6SLMQ79;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MusificationSwiftUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = self.Rahil.Radar;
-				PRODUCT_NAME = Radar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Invyte.RadarMuse;
+				PRODUCT_NAME = RadarMuse;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -556,17 +557,18 @@
 			baseConfigurationReference = 62B0F42D41B7719881AAF091 /* Pods-MusificationSwiftUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MusificationSwiftUI/Radar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "MusificationSwiftUI/Preview\\ Content";
-				DEVELOPMENT_TEAM = 5XC5483PFF;
+				DEVELOPMENT_TEAM = H9E6SLMQ79;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MusificationSwiftUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = self.Rahil.Radar;
-				PRODUCT_NAME = Radar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Invyte.RadarMuse;
+				PRODUCT_NAME = RadarMuse;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
