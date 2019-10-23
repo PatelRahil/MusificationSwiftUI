@@ -39,7 +39,7 @@ exports.updatePushArtistsList = functions.database.ref('/Users/{uid}').onWrite((
 			return null
 		}
 		const newArtistID = diff[0]
-		var tokens
+		var tokens = []
 		if (newArtistID in val) {
 			tokens = val[newArtistID]['pushTokens']
 			if (remove) {
@@ -164,7 +164,6 @@ exports.updatePushTokens = functions.database.ref('/Users/{uid}/pushToken').onWr
 		}
 		return Promise.all(promises).then( (res) => {
 
-			console.log("RES: ", res[0].val())
 			for (let i = 0; i < res.length; i++) {
 				let artist = res[i].val()
 				let artistId = artistIds[i]
