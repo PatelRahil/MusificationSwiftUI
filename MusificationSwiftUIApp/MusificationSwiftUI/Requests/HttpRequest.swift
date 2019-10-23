@@ -16,7 +16,6 @@ class HttpRequest {
             dbRequest.addValue(header, forHTTPHeaderField: headerField)
             let task = URLSession.shared.dataTask(with: dbRequest) { (data, response, error) in
                 if let data = data {
-                    print(data)
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                         if let data = json as? [String:Any] {

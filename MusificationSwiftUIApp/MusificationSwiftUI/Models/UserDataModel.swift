@@ -16,6 +16,11 @@ final class UserDataModel: ObservableObject {
     var didChange = PassthroughSubject<UserDataModel, Never>()
     @Published var trackedArtists: [Artist] = []
     @Published var uid: String?
+    
+    init() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onRecieveArtistId(_:)), name: .didRecievePushArtistId, object: nil)
+    }
+    
     func isTrackingBinding(for artist: Artist) -> Binding<Bool> {
         return Binding(get: {
             return self.trackedArtists.contains(artist)
@@ -63,5 +68,13 @@ final class UserDataModel: ObservableObject {
         guard let uid = uid else { return }
         let requester = FirebaseRequest()
         requester.uploadData(path: "\(dbUserRoot)/\(uid)/trackedArtists", value: self.trackedArtists.map { $0.id })
+    }
+    @objc private func onRecieveArtistId(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        print(userInfo)
+        guard let id = userInfo["artistId"] as? String else { return }
+        let pushArtist = trackedArtists.first { $0.id == id }
+        guard let artist = pushArtist else { return }
+        NotificationCenter.default.post(name: .didRecievePushArtist, object: artist, userInfo: nil)
     }
 }

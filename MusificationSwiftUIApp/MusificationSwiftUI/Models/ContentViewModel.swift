@@ -20,8 +20,14 @@ final class ContentViewModel: ObservableObject {
     @Published var selectedArtist: Artist = Artist()
     @Published var recentSongs: [Song] = []
     @Published var recentDate: String = ""
+    @Published var presentPushArtist: Bool = false
+    @Published var isLoading: Bool = false
     
-    
+    init() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onRecievePushArtist), name: .didRecievePushArtist, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onLoading), name: .didRecieveLoadingSignal, object: nil)
+
+    }
     
     func fetchTrackedArtists() {
         
@@ -85,5 +91,16 @@ final class ContentViewModel: ObservableObject {
         self.recentSongs = []
         self.recentDate = ""
         self.displayedAlbums = []
+    }
+    
+    @objc func onRecievePushArtist(_ notification: Notification) {
+        guard let artist = notification.object as? Artist else { return }
+        self.selectedArtist = artist
+        self.fetchAlbums(for: artist)
+        self.getRecentSongs(for: artist)
+        self.presentPushArtist = true
+    }
+    @objc func onLoading(_ notification: Notification) {
+        self.isLoading = true
     }
 }

@@ -56,7 +56,6 @@ class MusicRequest : HttpRequest {
     static func getArtist(artistName: String, success: @escaping (_ artist: Artist) -> Void, fail: @escaping (_ error: Error) -> Void) {
         var formattedArtistName = artistName.replacingOccurrences(of: " ", with: "+")
         formattedArtistName = formattedArtistName.replacingOccurrences(of: "&", with: "%26")
-        print("Formatted: \(formattedArtistName)")
         let limit = 1
         let urlString = rootDbPath + storefront + "/search?term=\(formattedArtistName)&limit=\(limit)&types=artists"
         if let header = header {
@@ -129,7 +128,6 @@ class MusicRequest : HttpRequest {
     }
     private static func getAlbum(with url: String, success: @escaping (_ album: Album) -> Void, fail: @escaping (_ error: Error) -> Void) {
         let urlString = altRootDbPath + url
-        print("urlString: \(urlString)")
         if let header = header {
             super.makeGetRequest(urlString: urlString, header: header, headerField: headerField, success: { data in
                 processAlbumData(data: data, success: { album in

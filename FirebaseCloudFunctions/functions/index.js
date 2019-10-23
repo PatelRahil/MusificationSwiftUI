@@ -133,10 +133,17 @@ exports.sendPushForNewSongs = functions.database.ref('/ArtistsMostRecentSong/{id
           		title: title,
           		body: body
           		// icon: follower.photoURL
+        	},
+        	data: {
+        		artistName: val[0]['artistName'],
+        		artistId: id
         	}
       	}
+      	const options = {
+      		content_available: true
+      	}
       	const tokens = snap.val()
-      	return admin.messaging().sendToDevice(tokens, payload).then(res => {
+      	return admin.messaging().sendToDevice(tokens, payload, options).then(res => {
       		return res
       	})
 

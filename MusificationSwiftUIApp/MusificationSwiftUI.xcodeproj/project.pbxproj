@@ -41,6 +41,7 @@
 		5AF6476822A8349B00873ACD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AF6476722A8349B00873ACD /* Assets.xcassets */; };
 		5AF6476B22A8349B00873ACD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AF6476A22A8349B00873ACD /* Preview Assets.xcassets */; };
 		5AF6476E22A8349B00873ACD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AF6476C22A8349B00873ACD /* LaunchScreen.storyboard */; };
+		5AFDA1C12360445700CCB6E8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDA1C02360445700CCB6E8 /* Extensions.swift */; };
 		67FDA5E753E59D6486A0EC15 /* Pods_MusificationSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF61BFDEA565CCC4E444C7AD /* Pods_MusificationSwiftUI.framework */; };
 		FB99F85122CFB7210086451C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99F85022CFB7210086451C /* SignInView.swift */; };
 		FB99F85322CFB8100086451C /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99F85222CFB8100086451C /* GoogleSignInButton.swift */; };
@@ -85,6 +86,7 @@
 		5AF6476A22A8349B00873ACD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5AF6476D22A8349B00873ACD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AF6476F22A8349B00873ACD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AFDA1C02360445700CCB6E8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		62B0F42D41B7719881AAF091 /* Pods-MusificationSwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusificationSwiftUI.release.xcconfig"; path = "Target Support Files/Pods-MusificationSwiftUI/Pods-MusificationSwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 		CF61BFDEA565CCC4E444C7AD /* Pods_MusificationSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusificationSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB99F85022CFB7210086451C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -180,10 +182,8 @@
 		5AF6476022A8349900873ACD /* MusificationSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				5AF6476122A8349900873ACD /* AppDelegate.swift */,
-				5AA62F2A22ADE22A0098FB5C /* Constants.swift */,
-				5AF6476322A8349900873ACD /* SceneDelegate.swift */,
-				5AA62F6722B598730098FB5C /* APIKeys.swift */,
+				5AFDA1C32360448100CCB6E8 /* Application */,
+				5AFDA1C22360446C00CCB6E8 /* Other */,
 				FB045B5622CFAB1700E0A2CB /* ViewRepresentables */,
 				5AA62F6422B5982A0098FB5C /* Requests */,
 				5AA62F1322AD29DF0098FB5C /* Models */,
@@ -222,6 +222,25 @@
 				5AA62F2C22AF22A80098FB5C /* TabViews */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5AFDA1C22360446C00CCB6E8 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				5AA62F2A22ADE22A0098FB5C /* Constants.swift */,
+				5AA62F6722B598730098FB5C /* APIKeys.swift */,
+				5AFDA1C02360445700CCB6E8 /* Extensions.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		5AFDA1C32360448100CCB6E8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				5AF6476122A8349900873ACD /* AppDelegate.swift */,
+				5AF6476322A8349900873ACD /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		FB045B5622CFAB1700E0A2CB /* ViewRepresentables */ = {
@@ -398,6 +417,7 @@
 				5AA62F6122B595AB0098FB5C /* ContentViewModel.swift in Sources */,
 				5AA62F1F22AD2A7B0098FB5C /* Settings.swift in Sources */,
 				5AA62F1D22AD2A640098FB5C /* Album.swift in Sources */,
+				5AFDA1C12360445700CCB6E8 /* Extensions.swift in Sources */,
 				5AA62F5E22AF52330098FB5C /* ArtistListItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

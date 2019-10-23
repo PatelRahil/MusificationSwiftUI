@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FirebaseAuth
-
+var contentAppeared = false
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate {
 
@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         // Override point for customization after application launch.
         configureAPIs()
         configurePushNotifications(for: application)
+        print("TEST did finish launching")
         return true
     }
 
@@ -69,6 +70,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         Messaging.messaging().delegate = self
     }
     
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("TEST: did become active")
+    }
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print("TEST: did enter background")
+    }
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print("TEST: will enter foreground")
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("DID RECIEVE 2")
+        print(userInfo)
+        guard let id = userInfo["artistId"] as? String else { return }
+        application.applicationIconBadgeNumber += 1
+        if !inForeground {
+            NotificationCenter.default.post(name: .didRecievePushArtistId, object: nil, userInfo: ["artistId": id])
+        }
+    }
+    
+    
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
         -> Bool {
@@ -114,6 +135,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print("Registered for fcmToken with id: \(fcmToken)")
+        print("TEST: Registered for fcmToken with id: \(fcmToken)")
     }
 }

@@ -12,6 +12,7 @@ import FirebaseAuth
 struct ContentView : View {
     @EnvironmentObject var viewModel: ContentViewModel
     @EnvironmentObject var userDataModel: UserDataModel
+    @State var isPresented = false
     var body: some View {
         Group {
             if userDataModel.uid != nil {
@@ -41,7 +42,14 @@ struct ContentView : View {
                 }.navigationViewStyle(StackNavigationViewStyle())
             }
         }.onAppear {
+            contentAppeared = true
             print("Content View appeared, id = \(self.userDataModel.uid ?? "No user id")")
+        }.sheet(isPresented: self.$viewModel.presentPushArtist, onDismiss: {
+            self.viewModel.presentPushArtist = false
+        }) {
+            ArtistInfoView(artist: self.$viewModel.selectedArtist, viewModel: self.viewModel, dataModel: self.userDataModel, isTracking: self.userDataModel.isTrackingBinding(for: self.viewModel.selectedArtist))
+        }.popover(isPresented: self.$viewModel.isLoading) {
+            Text("Loading")
         }
     }
 }
