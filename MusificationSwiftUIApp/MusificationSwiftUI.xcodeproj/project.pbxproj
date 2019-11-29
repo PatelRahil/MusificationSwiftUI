@@ -34,6 +34,7 @@
 		5AA62F6622B5983E0098FB5C /* MusicRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA62F6522B5983E0098FB5C /* MusicRequest.swift */; };
 		5AA62F6822B598730098FB5C /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA62F6722B598730098FB5C /* APIKeys.swift */; };
 		5AA62F6A22B599870098FB5C /* keys.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AA62F6922B599870098FB5C /* keys.json */; };
+		5AA873EB2378F387001F396E /* CustomToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA873EA2378F387001F396E /* CustomToggleStyle.swift */; };
 		5AD1AEE622D030620013B7EC /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD1AEE522D030620013B7EC /* CreateAccountView.swift */; };
 		5AF6476222A8349900873ACD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6476122A8349900873ACD /* AppDelegate.swift */; };
 		5AF6476422A8349900873ACD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6476322A8349900873ACD /* SceneDelegate.swift */; };
@@ -77,6 +78,7 @@
 		5AA62F6522B5983E0098FB5C /* MusicRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRequest.swift; sourceTree = "<group>"; };
 		5AA62F6722B598730098FB5C /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		5AA62F6922B599870098FB5C /* keys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = keys.json; sourceTree = "<group>"; };
+		5AA873EA2378F387001F396E /* CustomToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyle.swift; sourceTree = "<group>"; };
 		5AD1AEE522D030620013B7EC /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		5AF6475E22A8349900873ACD /* RadarMuse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadarMuse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF6476122A8349900873ACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				5AA62F2A22ADE22A0098FB5C /* Constants.swift */,
 				5AA62F6722B598730098FB5C /* APIKeys.swift */,
 				5AFDA1C02360445700CCB6E8 /* Extensions.swift */,
+				5AA873EA2378F387001F396E /* CustomToggleStyle.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				5AA62F2722ADCD320098FB5C /* ArtistsView.swift in Sources */,
 				5AA62F6322B598010098FB5C /* HttpRequest.swift in Sources */,
 				5A53802122C75A8E007CCE00 /* AlbumsList.swift in Sources */,
+				5AA873EB2378F387001F396E /* CustomToggleStyle.swift in Sources */,
 				5AA62F2522AD3A7A0098FB5C /* CustomError.swift in Sources */,
 				5AA62F2922ADCDE70098FB5C /* GenresView.swift in Sources */,
 				5AF6476222A8349900873ACD /* AppDelegate.swift in Sources */,

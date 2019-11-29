@@ -18,9 +18,7 @@ struct ArtistInfoView : View {
         VStack {
             Text(artist.name).bold().font(.largeTitle).padding()
             Divider()
-            Toggle(isOn: isTracking) {
-                Text("Tracking").bold()
-            }
+            Toggle("", isOn: isTracking).toggleStyle(CustomToggleStyle(label: "Tracking", onColor: Color("Purple")))
             .padding()
             .accentColor(Palette.primaryColor)
             Divider()

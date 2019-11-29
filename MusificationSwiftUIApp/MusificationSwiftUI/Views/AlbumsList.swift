@@ -16,7 +16,7 @@ struct AlbumsList : View {
                 ForEach(albums, id: \.id) { album in
                     self.albumButton(album: album)
                 }
-            }.frame(height: CGFloat(albumSize + 2 * albumShadowRadius))
+            }.frame(height: CGFloat(albumSize + 2 * albumShadowRadius + 20))
         }
     }
     func albumButton(album: Album) -> some View {

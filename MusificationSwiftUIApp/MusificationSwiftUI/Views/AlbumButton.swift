@@ -10,12 +10,13 @@ import SwiftUI
 
 struct AlbumButton : View {
     let album: Album
+    let gradient = Gradient(colors: [Color("Orange"), Color("Purple")])
     var body: some View {
         Button(action: {
             self.album.openURL()
         }) {
             ZStack {
-                Palette.primaryColor
+                LinearGradient(gradient: gradient, startPoint: .topLeading, endPoint: .bottomTrailing)
                 VStack {
                     Text(album.name)
                         .frame(width: CGFloat(albumSize), height: CGFloat(albumSize))
